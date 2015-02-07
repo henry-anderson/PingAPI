@@ -60,6 +60,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
         ping.setMOTD(new ChatComponentText(reply.getMOTD()));
         ping.setPlayerSample(playerSample);
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
-        return new PacketStatusOutServerInfo(ping);
+        PacketStatusOutServerInfo packet = new PacketStatusOutServerInfo(ping);
+        return packet;
 	}
 }
