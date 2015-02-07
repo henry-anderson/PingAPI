@@ -32,13 +32,11 @@ public class DuplexHandler extends ChannelDuplexHandler {
 				super.write(ctx, this.constructorPacket(reply), promise);
 			}
 			return;
-			
 		}
 		super.write(ctx, msg, promise);
 	}
 
 	private PingReply constructReply(PacketStatusOutServerInfo packet, ChannelHandlerContext ctx) {
-		PingReply reply = null;
 		try {
 			ServerPing ping = (ServerPing) serverPingField.get(packet);
 			String motd = ping.a().getText();
@@ -47,11 +45,12 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			int protocolVersion = ping.c().b();
 			String protocolName = ping.c().a();
 			GameProfile[] profiles = ping.b().c();
-			reply = new PingReply(ctx, motd, online, max, protocolVersion, protocolName, profiles);
+			PingReply reply = new PingReply(ctx, motd, online, max, protocolVersion, protocolName, profiles);
+			return reply;
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return reply;
+		return null;
 	}
 	
 	private PacketStatusOutServerInfo constructorPacket(PingReply reply) {

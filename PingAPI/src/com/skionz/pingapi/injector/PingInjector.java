@@ -1,11 +1,13 @@
 package com.skionz.pingapi.injector;
 
 import io.netty.channel.Channel;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import net.minecraft.server.v1_8_R1.MinecraftServer;
 import net.minecraft.server.v1_8_R1.NetworkManager;
 import net.minecraft.server.v1_8_R1.ServerConnection;
@@ -17,20 +19,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.skionz.pingapi.reflect.ReflectUtils;
+
 public class PingInjector {
-	private static PingInjector instance;
 	private JavaPlugin plugin;
 	private MinecraftServer server;
 	private List<?> networkManagers;
 	private List<NetworkManager> injectedNetworkManagers;
 	
-	public static PingInjector getInstance() {
-		return instance;
-	}
-	
 	public PingInjector(JavaPlugin plugin) {
 		try {
-			instance = this;
 			this.plugin = plugin;
 			CraftServer craftserver = (CraftServer) Bukkit.getServer();
 			Field console = craftserver.getClass().getDeclaredField("console");
@@ -42,7 +40,7 @@ public class PingInjector {
 			Bukkit.getPluginManager().registerEvents(new Listener() {
 				@EventHandler
 				public void onPing(ServerListPingEvent event) {
-					injectAll();
+					injectOpenConnections();
 				}
 			}, this.plugin);
 		} catch(Exception e) {
@@ -50,7 +48,7 @@ public class PingInjector {
 		}
 	}
 	
-	public void uninjectAll() {
+	public void uninjectOpenConnections() {
 		try {
 			Field field = NetworkManager.class.getDeclaredField("i");
 			field.setAccessible(true);
@@ -65,14 +63,14 @@ public class PingInjector {
 		}
 	}
 	
-	private void injectAll() {
+	private void injectOpenConnections() {
 		try {
 			Field field = NetworkManager.class.getDeclaredField("i");
 			field.setAccessible(true);
 			for(Object manager : networkManagers) {
 				if(!injectedNetworkManagers.contains(manager)) {
 					injectedNetworkManagers.add((NetworkManager) manager);
-					Channel channel = (Channel) field.get(manager);
+					Channel channel = (Channel) ReflectUtils.getFirstFieldByType(NetworkManager.class, Channel.class).get(manager);
 					if(channel.pipeline().context("packet_handler") != null) {
 						channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
 					}

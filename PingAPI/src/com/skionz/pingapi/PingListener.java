@@ -1,5 +1,5 @@
 package com.skionz.pingapi;
 
 public interface PingListener {
-	public void onPing(PingReply ping);
+	public void onPing(PingReply reply);
 }
