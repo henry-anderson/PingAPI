@@ -1,20 +1,23 @@
 package com.skionz.pingapi;
 
+import java.util.List;
+
 import io.netty.channel.ChannelHandlerContext;
 
 import com.mojang.authlib.GameProfile;
 
+@SuppressWarnings("unused")
 public class PingReply {
-	protected ChannelHandlerContext ctx;
+	private Object ctx;
 	private String motd;
 	private int onlinePlayers;
 	private int maxPlayers;
 	private int protocolVersion;
 	private String protocolName;
-	private GameProfile[] playerSample;
+	private List<String> playerSample;
 	private boolean hidePlayers = false;
 	
-	public PingReply(ChannelHandlerContext ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, GameProfile[] playerSample) {
+	public PingReply(Object ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, List<String> playerSample) {
 		this.ctx = ctx;
 		this.motd = motd;
 		this.onlinePlayers = onlinePlayers;
@@ -44,7 +47,7 @@ public class PingReply {
 		return this.protocolName;
 	}
 	
-	public GameProfile[] getPlayerSample() {
+	public List<String> getPlayerSample() {
 		return this.playerSample;
 	}
 	
@@ -72,7 +75,7 @@ public class PingReply {
 		this.protocolName = protocolName;
 	}
 	
-	public void setPlayerSample(GameProfile[] playerSample) {
+	public void setPlayerSample(List<String> playerSample) {
 		this.playerSample = playerSample;
 	}
 	

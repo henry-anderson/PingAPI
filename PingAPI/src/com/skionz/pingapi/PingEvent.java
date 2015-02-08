@@ -1,5 +1,9 @@
 package com.skionz.pingapi;
 
+import java.lang.reflect.Constructor;
+
+import org.bukkit.Bukkit;
+
 public class PingEvent {
 	private PingReply reply;
 	private boolean cancel;
@@ -21,6 +25,15 @@ public class PingEvent {
 	}
 	
 	public ServerInfoPacket createNewPacket() {
-		return new ServerInfoPacket(this.reply);
+		try {
+			String name = Bukkit.getServer().getClass().getPackage().getName();
+	        String version = name.substring(name.lastIndexOf('.') + 1);
+	        Class<?> packet = Class.forName("com.skionz.pingapi." + version + ".ServerInfoPacketHandler");
+	        Constructor<?> constructor = packet.getDeclaredConstructor(this.reply.getClass());
+			return (ServerInfoPacket) constructor.newInstance(this.reply);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

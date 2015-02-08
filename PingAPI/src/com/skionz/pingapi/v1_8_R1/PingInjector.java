@@ -1,4 +1,4 @@
-package com.skionz.pingapi.injector;
+package com.skionz.pingapi.v1_8_R1;
 
 import io.netty.channel.Channel;
 
@@ -36,7 +36,7 @@ public class PingInjector implements Listener {
 		}
 	}
 	
-	private void injectOpenConnections() {
+	public void injectOpenConnections() {
 		try {
 			Field field = ReflectUtils.getFirstFieldByType(NetworkManager.class, Channel.class);
 			field.setAccessible(true);
@@ -52,7 +52,7 @@ public class PingInjector implements Listener {
 		}
 	}
 	
-	private Object getNetworkManagerList(ServerConnection conn) {
+	public Object getNetworkManagerList(ServerConnection conn) {
 		try {
 			for(Method method : conn.getClass().getDeclaredMethods()) {
 				method.setAccessible(true);
@@ -71,4 +71,5 @@ public class PingInjector implements Listener {
 	public void serverListPing(ServerListPingEvent event) {
 		this.injectOpenConnections();
 	}
+
 }
