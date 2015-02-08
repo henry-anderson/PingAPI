@@ -26,4 +26,12 @@ public class ServerInfoPacket {
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
         return new PacketStatusOutServerInfo(ping);
 	}
+	
+	public PingReply getPingReply() {
+		return this.reply;
+	}
+	
+	public void setPingReply(PingReply reply) {
+		this.reply = reply;
+	}
 }

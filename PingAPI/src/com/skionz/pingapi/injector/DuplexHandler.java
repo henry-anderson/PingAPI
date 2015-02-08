@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.mojang.authlib.GameProfile;
 import com.skionz.pingapi.PingAPI;
+import com.skionz.pingapi.PingEvent;
 import com.skionz.pingapi.PingListener;
 import com.skionz.pingapi.PingReply;
 import com.skionz.pingapi.reflect.ReflectUtils;
@@ -25,10 +26,11 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		if(msg instanceof PacketStatusOutServerInfo) {
 			PacketStatusOutServerInfo packet = (PacketStatusOutServerInfo) msg;
 			PingReply reply = this.constructReply(packet, ctx);
+			PingEvent event = new PingEvent(reply);
 			for(PingListener listener : PingAPI.getListeners()) {
-				listener.onPing(reply);
+				listener.onPing(event);
 			}
-			if(!reply.isCancelled()) {
+			if(!event.isCancelled()) {
 				super.write(ctx, this.constructorPacket(reply), promise);
 			}
 			return;
@@ -58,7 +60,12 @@ public class DuplexHandler extends ChannelDuplexHandler {
         playerSample.a(reply.getPlayerSample());
         ServerPing ping = new ServerPing();
         ping.setMOTD(new ChatComponentText(reply.getMOTD()));
-        ping.setPlayerSample(playerSample);
+        if(reply.arePlayersHidden()) {
+        	ping.setPlayerSample(null);
+        }
+        else {
+        	ping.setPlayerSample(playerSample);
+        }
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
         PacketStatusOutServerInfo packet = new PacketStatusOutServerInfo(ping);
         return packet;

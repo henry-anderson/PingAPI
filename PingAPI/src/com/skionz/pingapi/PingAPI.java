@@ -2,21 +2,18 @@ package com.skionz.pingapi;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.skionz.pingapi.injector.PingInjector;
 
 public class PingAPI extends JavaPlugin {
 	private static List<PingListener> listeners;
-	private PingInjector injector;
-	
-	public void onDisable() {
-		this.injector.uninjectOpenConnections();
-	}
 	
 	public void onEnable() {
 		PingAPI.listeners = new ArrayList<PingListener>();
-		this.injector = new PingInjector(this);
+		Bukkit.getPluginManager().registerEvents(new PingInjector(), this);
 	}
 	
 	public static void registerListener(PingListener listener) {

@@ -12,7 +12,7 @@ public class PingReply {
 	private int protocolVersion;
 	private String protocolName;
 	private GameProfile[] playerSample;
-	private boolean cancelled = false;
+	private boolean hidePlayers = false;
 	
 	public PingReply(ChannelHandlerContext ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, GameProfile[] playerSample) {
 		this.ctx = ctx;
@@ -48,10 +48,9 @@ public class PingReply {
 		return this.playerSample;
 	}
 	
-	public boolean isCancelled() {
-		return this.cancelled;
+	public boolean arePlayersHidden() {
+		return this.hidePlayers;
 	}
-	
 	
 	public void setOnlinePlayers(int onlinePlayers) {
 		this.onlinePlayers = onlinePlayers;
@@ -77,7 +76,7 @@ public class PingReply {
 		this.playerSample = playerSample;
 	}
 	
-	public void setCancelled(boolean cancelled) {
-		this.cancelled = cancelled;
+	public void hidePlayers(boolean hide) {
+		this.hidePlayers = hide;
 	}
 }
