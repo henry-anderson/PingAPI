@@ -14,6 +14,7 @@ import com.skionz.pingapi.reflect.ReflectUtils;
 
 import net.minecraft.server.v1_8_R1.ChatComponentText;
 import net.minecraft.server.v1_8_R1.ChatSerializer;
+import net.minecraft.server.v1_8_R1.PacketStatusOutPong;
 import net.minecraft.server.v1_8_R1.PacketStatusOutServerInfo;
 import net.minecraft.server.v1_8_R1.ServerPing;
 import net.minecraft.server.v1_8_R1.ServerPingPlayerSample;
@@ -24,6 +25,7 @@ import io.netty.channel.ChannelPromise;
 
 public class DuplexHandler extends ChannelDuplexHandler {
 	private Field serverPingField = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
+	private PingEvent event;
 	
 	@Override
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
@@ -34,10 +36,16 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			for(PingListener listener : PingAPI.getListeners()) {
 				listener.onPing(event);
 			}
+			this.event = event;
 			if(!event.isCancelled()) {
 				super.write(ctx, this.constructorPacket(reply), promise);
 			}
 			return;
+		}
+		if(msg instanceof PacketStatusOutPong) {
+			if(this.event != null && this.event.isPongCancelled()) {
+				return;
+			}
 		}
 		super.write(ctx, msg, promise);
 	}
