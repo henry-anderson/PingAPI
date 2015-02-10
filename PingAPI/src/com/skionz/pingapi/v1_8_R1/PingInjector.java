@@ -15,6 +15,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R1.CraftServer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import com.skionz.pingapi.reflect.ReflectUtils;
@@ -42,7 +43,9 @@ public class PingInjector implements Listener {
 			field.setAccessible(true);
 			for(Object manager : networkManagers) {
 				Channel channel = (Channel) field.get(manager);
-				if(channel.pipeline().context("ping_handler") != null) return;
+				if(channel.pipeline().context("ping_handler") != null) {
+					channel.pipeline().remove("ping_handler");
+				}
 				if(channel.pipeline().context("packet_handler") != null) {
 					channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
 				}
@@ -69,6 +72,10 @@ public class PingInjector implements Listener {
 	
 	@EventHandler
 	public void serverListPing(ServerListPingEvent event) {
+		this.injectOpenConnections();
+	}
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
 		this.injectOpenConnections();
 	}
 
