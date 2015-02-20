@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.craftbukkit.v1_7_R4.util.CraftIconCache;
+
 import com.skionz.pingapi.PingAPI;
 import com.skionz.pingapi.PingEvent;
 import com.skionz.pingapi.PingListener;
@@ -17,7 +19,7 @@ import net.minecraft.server.v1_7_R4.PacketStatusOutServerInfo;
 import net.minecraft.server.v1_7_R4.ServerPing;
 import net.minecraft.server.v1_7_R4.ServerPingPlayerSample;
 import net.minecraft.server.v1_7_R4.ServerPingServerData;
-import net.minecraft.server.v1_8_R1.PacketStatusOutPong;
+import net.minecraft.server.v1_7_R4.PacketStatusOutPong;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 import net.minecraft.util.io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
@@ -38,7 +40,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 			this.event = event;
 			if(!event.isCancelled()) {
-				super.write(ctx, this.constructorPacket(reply), promise);
+				super.write(ctx, this.constructPacket(reply), promise);
 			}
 			return;
 		}
@@ -71,7 +73,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		return null;
 	}
 	
-	private PacketStatusOutServerInfo constructorPacket(PingReply reply) {
+	private PacketStatusOutServerInfo constructPacket(PingReply reply) {
 		GameProfile[] sample = new GameProfile[reply.getPlayerSample().size()];
 		List<String> list = reply.getPlayerSample();
 		for(int i = 0; i < list.size(); i++) {
@@ -83,6 +85,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
         ping.setMOTD(new ChatComponentText(reply.getMOTD()));
         ping.setPlayerSample(playerSample);
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+        ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
         return new PacketStatusOutServerInfo(ping);
 	}
 }

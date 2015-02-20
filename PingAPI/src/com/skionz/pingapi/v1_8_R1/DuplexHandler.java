@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.craftbukkit.v1_8_R1.util.CraftIconCache;
+
 import com.mojang.authlib.GameProfile;
 import com.skionz.pingapi.PingAPI;
 import com.skionz.pingapi.PingEvent;
@@ -24,7 +26,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
 
 public class DuplexHandler extends ChannelDuplexHandler {
-	private Field serverPingField = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
+	private static final Field serverPingField = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
 	private PingEvent event;
 	
 	@Override
@@ -38,7 +40,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 			this.event = event;
 			if(!event.isCancelled()) {
-				super.write(ctx, this.constructorPacket(reply), promise);
+				super.write(ctx, this.constructPacket(reply), promise);
 			}
 			return;
 		}
@@ -48,6 +50,11 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 		}
 		super.write(ctx, msg, promise);
+	}
+	
+	@Override
+	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+		super.channelRead(ctx, msg);
 	}
 
 	private PingReply constructReply(PacketStatusOutServerInfo packet, ChannelHandlerContext ctx) {
@@ -71,7 +78,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		return null;
 	}
 	
-	private PacketStatusOutServerInfo constructorPacket(PingReply reply) {
+	private PacketStatusOutServerInfo constructPacket(PingReply reply) {
 		GameProfile[] sample = new GameProfile[reply.getPlayerSample().size()];
 		List<String> list = reply.getPlayerSample();
 		for(int i = 0; i < list.size(); i++) {
@@ -83,6 +90,8 @@ public class DuplexHandler extends ChannelDuplexHandler {
         ping.setMOTD(new ChatComponentText(reply.getMOTD()));
         ping.setPlayerSample(playerSample);
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+        ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
+        System.out.println("stuff:" + ((CraftIconCache) reply.getIcon()).value);
         return new PacketStatusOutServerInfo(ping);
 	}
 }

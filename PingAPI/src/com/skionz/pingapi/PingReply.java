@@ -2,6 +2,9 @@ package com.skionz.pingapi;
 
 import java.util.List;
 
+import org.bukkit.Bukkit;
+import org.bukkit.util.CachedServerIcon;
+
 import io.netty.channel.ChannelHandlerContext;
 
 import com.mojang.authlib.GameProfile;
@@ -16,6 +19,7 @@ public class PingReply {
 	private String protocolName;
 	private List<String> playerSample;
 	private boolean hidePlayers = false;
+	private CachedServerIcon icon = Bukkit.getServerIcon();
 	
 	public PingReply(Object ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, List<String> playerSample) {
 		this.ctx = ctx;
@@ -55,6 +59,10 @@ public class PingReply {
 		return this.hidePlayers;
 	}
 	
+	public CachedServerIcon getIcon() {
+		return this.icon;
+	}
+	
 	public void setOnlinePlayers(int onlinePlayers) {
 		this.onlinePlayers = onlinePlayers;
 	}
@@ -81,5 +89,9 @@ public class PingReply {
 	
 	public void hidePlayers(boolean hide) {
 		this.hidePlayers = hide;
+	}
+	
+	public void setIcon(CachedServerIcon icon) {
+		this.icon = icon;
 	}
 }

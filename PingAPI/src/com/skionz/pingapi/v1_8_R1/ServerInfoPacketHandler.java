@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.craftbukkit.v1_8_R1.util.CraftIconCache;
+
 import net.minecraft.server.v1_8_R1.ChatComponentText;
 import net.minecraft.server.v1_8_R1.PacketStatusOutServerInfo;
 import net.minecraft.server.v1_8_R1.ServerPing;
@@ -58,6 +60,7 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
         ping.setMOTD(new ChatComponentText(reply.getMOTD()));
         ping.setPlayerSample(playerSample);
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+        ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
         return new PacketStatusOutServerInfo(ping);
 	}
 }
