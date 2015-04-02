@@ -1,4 +1,4 @@
-package com.skionz.pingapi
+package com.skionz.pingapi;
 
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
