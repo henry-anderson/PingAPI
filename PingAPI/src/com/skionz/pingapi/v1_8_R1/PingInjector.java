@@ -30,7 +30,7 @@ public class PingInjector implements Listener {
 			Field console = craftserver.getClass().getDeclaredField("console");
 			console.setAccessible(true);
 			this.server = (MinecraftServer) console.get(craftserver);
-			ServerConnection conn = this.server.getServerConnection();
+			ServerConnection conn = this.server.ao();
 			networkManagers = Collections.synchronizedList((List<?>) this.getNetworkManagerList(conn));
 		} catch(Exception e) {
 			e.printStackTrace();
