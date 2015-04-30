@@ -89,7 +89,6 @@ public class DuplexHandler extends ChannelDuplexHandler {
                 ServerPing ping = new ServerPing();
                 ping.setMOTD(new ChatComponentText(reply.getMOTD()));
                 ping.setPlayerSample(playerSample);
-//                ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
                 ping.setServerInfo(new ServerData(reply.getProtocolName(), reply.getProtocolVersion()));
                 ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
                 System.out.println("stuff:" + ((CraftIconCache) reply.getIcon()).value);
