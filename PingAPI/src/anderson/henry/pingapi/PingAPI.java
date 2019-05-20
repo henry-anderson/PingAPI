@@ -16,7 +16,7 @@ public class PingAPI extends JavaPlugin {
 			PingAPI.listeners = new ArrayList<PingListener>();
 			String name = Bukkit.getServer().getClass().getPackage().getName();
         	        String version = name.substring(name.lastIndexOf('.') + 1);
-        	        Class<?> injector = Class.forName("com.skionz.pingapi." + version + ".PingInjector");
+        	        Class<?> injector = Class.forName("anderson.henry.pingapi." + version + ".PingInjector");
         	        Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
         	        this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
 		} catch(Exception e) {
