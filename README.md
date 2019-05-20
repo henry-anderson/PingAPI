@@ -1,6 +1,6 @@
 <img src="http://i.imgur.com/vIWvOUv.gif"></img>
 
-PingAPI give you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>
+PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>
 
 # Features
 - Modify the online player count and the max players
