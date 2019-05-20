@@ -37,7 +37,7 @@ public class PingEvent {
 		try {
 			String name = Bukkit.getServer().getClass().getPackage().getName();
 	        String version = name.substring(name.lastIndexOf('.') + 1);
-	        Class<?> packet = Class.forName("com.skionz.pingapi." + version + ".ServerInfoPacketHandler");
+	        Class<?> packet = Class.forName("anderson.henry.pingapi." + version + ".ServerInfoPacketHandler");
 	        Constructor<?> constructor = packet.getDeclaredConstructor(reply.getClass());
 			return (ServerInfoPacket) constructor.newInstance(reply);
 		} catch(Exception e) {
