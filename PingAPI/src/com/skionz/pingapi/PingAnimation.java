@@ -96,9 +96,10 @@ public class PingAnimation {
 		}
 		
 		void animate() {
-			motd = ChatColor.translateAlternateColorCodes('&', motdAnimation[step % motdAnimation.length] );
-			if(protocolAnimation != null)
-				protocol = ChatColor.translateAlternateColorCodes('&', protocolAnimation[step % protocolAnimation.length] );
+			motd = ChatColor.translateAlternateColorCodes('&', motdAnimation[step % motdAnimation.length]);
+			if(protocolAnimation != null) {
+				protocol = ChatColor.translateAlternateColorCodes('&', protocolAnimation[step % protocolAnimation.length]);
+			}
 		}
 		
 		

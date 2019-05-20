@@ -1,4 +1,4 @@
-package com.skionz.pingapi.v1_8_R1;
+package com.skionz.pingapi.v1_8_R2;
 
 import io.netty.channel.Channel;
 
@@ -7,12 +7,12 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
-import net.minecraft.server.v1_8_R1.MinecraftServer;
-import net.minecraft.server.v1_8_R1.NetworkManager;
-import net.minecraft.server.v1_8_R1.ServerConnection;
+import net.minecraft.server.v1_8_R2.MinecraftServer;
+import net.minecraft.server.v1_8_R2.NetworkManager;
+import net.minecraft.server.v1_8_R2.ServerConnection;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_8_R2.CraftServer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -30,7 +30,7 @@ public class PingInjector implements Listener {
 			Field console = craftserver.getClass().getDeclaredField("console");
 			console.setAccessible(true);
 			this.server = (MinecraftServer) console.get(craftserver);
-			ServerConnection conn = this.server.ao();
+			ServerConnection conn = this.server.ap();
 			networkManagers = Collections.synchronizedList((List<?>) this.getNetworkManagerList(conn));
 		} catch(Exception e) {
 			e.printStackTrace();

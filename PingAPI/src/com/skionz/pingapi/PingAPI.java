@@ -2,6 +2,7 @@ package com.skionz.pingapi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,11 +15,13 @@ public class PingAPI extends JavaPlugin {
 		try {
 			PingAPI.listeners = new ArrayList<PingListener>();
 			String name = Bukkit.getServer().getClass().getPackage().getName();
-	        String version = name.substring(name.lastIndexOf('.') + 1);
-	        Class<?> injector = Class.forName("com.skionz.pingapi." + version + ".PingInjector");
-	        Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
+        	        String version = name.substring(name.lastIndexOf('.') + 1);
+        	        Class<?> injector = Class.forName("com.skionz.pingapi." + version + ".PingInjector");
+        	        Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
+        	        this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
 		} catch(Exception e) {
-			e.printStackTrace();
+		    	this.getLogger().log(Level.SEVERE, "No compatible server version!", e);
+		    	Bukkit.getPluginManager().disablePlugin(this);
 		}
 	}
 	

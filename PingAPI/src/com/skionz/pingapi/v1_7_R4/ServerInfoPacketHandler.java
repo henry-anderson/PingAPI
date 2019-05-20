@@ -55,12 +55,12 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 			sample[i] = new GameProfile(UUID.randomUUID(), list.get(i));
 		}
 		ServerPingPlayerSample playerSample = new ServerPingPlayerSample(reply.getMaxPlayers(), reply.getOnlinePlayers());
-        playerSample.a(sample);
-        ServerPing ping = new ServerPing();
-        ping.setMOTD(new ChatComponentText(reply.getMOTD()));
-        ping.setPlayerSample(playerSample);
-        ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
-        ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
-        return new PacketStatusOutServerInfo(ping);
+                playerSample.a(sample);
+                ServerPing ping = new ServerPing();
+                ping.setMOTD(new ChatComponentText(reply.getMOTD()));
+                ping.setPlayerSample(playerSample);
+                ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+                ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
+                return new PacketStatusOutServerInfo(ping);
 	}
 }

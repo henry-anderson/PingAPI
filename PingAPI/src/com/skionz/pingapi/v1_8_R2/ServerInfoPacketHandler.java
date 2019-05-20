@@ -1,17 +1,17 @@
-package com.skionz.pingapi.v1_8_R1;
+package com.skionz.pingapi.v1_8_R2;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.craftbukkit.v1_8_R1.util.CraftIconCache;
+import org.bukkit.craftbukkit.v1_8_R2.util.CraftIconCache;
 
-import net.minecraft.server.v1_8_R1.ChatComponentText;
-import net.minecraft.server.v1_8_R1.PacketStatusOutServerInfo;
-import net.minecraft.server.v1_8_R1.ServerPing;
-import net.minecraft.server.v1_8_R1.ServerPingPlayerSample;
-import net.minecraft.server.v1_8_R1.ServerPingServerData;
+import net.minecraft.server.v1_8_R2.ChatComponentText;
+import net.minecraft.server.v1_8_R2.PacketStatusOutServerInfo;
+import net.minecraft.server.v1_8_R2.ServerPing;
+import net.minecraft.server.v1_8_R2.ServerPing.ServerPingPlayerSample;
+import net.minecraft.server.v1_8_R2.ServerPing.ServerData;
 
 import com.mojang.authlib.GameProfile;
 import com.skionz.pingapi.PingReply;
@@ -59,7 +59,7 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
                 ServerPing ping = new ServerPing();
                 ping.setMOTD(new ChatComponentText(reply.getMOTD()));
                 ping.setPlayerSample(playerSample);
-                ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+                ping.setServerInfo(new ServerData(reply.getProtocolName(), reply.getProtocolVersion()));
                 ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
                 return new PacketStatusOutServerInfo(ping);
 	}
