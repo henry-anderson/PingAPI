@@ -6,5 +6,4 @@ PingAPI gives you more control over how you reply to ping requests. You can down
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
 - Fake the protocol name and version to display text instead of the player count
-- Create server list 'animations'
 - Hide the player count
