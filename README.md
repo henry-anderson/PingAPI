@@ -50,9 +50,10 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-This is the output
-
 <h3>Changing the player count to text</h3>
+
+<img src="http://i.imgur.com/JwaX1Im.png"></img>
+
 The client sends a ping packet to the server and it replies with all your information including the server's protocol version and compares it to that of the client. If the protocol version's do not match it displays a red message in replacement of the player count such as "Spigot 1.8" We can use this and send a fake protocol version such as -1 and change the default protocol name message to a new one. Here is an example.
 
 <pre>
@@ -65,6 +66,21 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-The result would look like this
+<h3>Changing the player sample (hover message)</h3>
 
-<img src="http://i.imgur.com/JwaX1Im.png"></img>
+<img src="http://i.imgur.com/m7TmDgs.png"></img>
+
+As you probably know, when you hover over the player count it displays a list of a few random player's names. This can easily be changed to your own message with PingAPI. Here is an example.
+
+<pre>
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        List<String> sample = new ArrayList<String>();
+        sample.add(ChatColor.BLUE + "GenericCraft");
+        sample.add("-------------------------");
+        sample.add(ChatColor.GOLD + "New game thing available");
+        sample.add(ChatColor.AQUA + "Join for free stuff now!");
+        event.getReply().setPlayerSample(sample);
+    }
+}
+</pre>
