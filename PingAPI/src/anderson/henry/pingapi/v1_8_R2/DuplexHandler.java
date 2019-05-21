@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.craftbukkit.v1_8_R2.util.CraftIconCache;
-
 import com.mojang.authlib.GameProfile;
 
 import anderson.henry.pingapi.PingAPI;
@@ -21,6 +19,8 @@ import net.minecraft.server.v1_8_R2.PacketStatusOutServerInfo;
 import net.minecraft.server.v1_8_R2.ServerPing;
 import net.minecraft.server.v1_8_R2.ServerPing.ServerData;
 import net.minecraft.server.v1_8_R2.ServerPing.ServerPingPlayerSample;
+import org.bukkit.craftbukkit.v1_8_R2.util.CraftIconCache;
+
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
@@ -50,11 +50,6 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 		}
 		super.write(ctx, msg, promise);
-	}
-	
-	@Override
-	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		super.channelRead(ctx, msg);
 	}
 
 	private PingReply constructReply(PacketStatusOutServerInfo packet, ChannelHandlerContext ctx) {

@@ -17,13 +17,12 @@ import net.minecraft.server.v1_13_R2.PacketStatusOutServerInfo;
 import net.minecraft.server.v1_13_R2.ServerPing;
 import net.minecraft.server.v1_13_R2.ServerPing.ServerData;
 import net.minecraft.server.v1_13_R2.ServerPing.ServerPingPlayerSample;
+import org.bukkit.craftbukkit.v1_13_R2.util.CraftIconCache;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import org.bukkit.craftbukkit.v1_14_R1.util.CraftIconCache;
 
 public class DuplexHandler extends ChannelDuplexHandler {
 	private static final Field serverPingField = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
@@ -50,11 +49,6 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 		}
 		super.write(ctx, msg, promise);
-	}
-	
-	@Override
-	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		super.channelRead(ctx, msg);
 	}
 
 	private PingReply constructReply(PacketStatusOutServerInfo packet, ChannelHandlerContext ctx) {

@@ -51,11 +51,6 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		}
 		super.write(ctx, msg, promise);
 	}
-	
-	@Override
-	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		super.channelRead(ctx, msg);
-	}
 
 	private PingReply constructReply(PacketStatusOutServerInfo packet, ChannelHandlerContext ctx) {
 		try {
