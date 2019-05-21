@@ -12,7 +12,7 @@ PingAPI gives you more control over how you reply to ping requests. You can down
 # Tutorials
 <h3>Creating a basic listener</h3>
 
-To use PingAPI to its full potential you have to create a Listener. This is done similar to registering a Bukkit listener. Before we actually register it we need to create it. You can either create a new class that implements 'PingListener,' or just an anonymous inner class. Here is a simple example of a PingListener
+To use PingAPI to its full potential you have to create a Listener. This is done similar to registering a Bukkit listener. Before we actually register it we need to create it. You can either create a new class that implements 'PingListener,' or just an anonymous inner class. Here is a simple example of a PingListener.
 
 <pre>
 public class MyListener implements PingListener {
@@ -37,7 +37,7 @@ public class MyPlugin extends JavaPlugin {
 </pre>
 
 <h3>Changing the player count</h3>
-Bukkit does not support changing the online player count with the ServerListPingEvent for obvious reasons, but PingAPI does. You can easily do this by invoking PingReply#setOnlinePlayers(int). Here is an example:
+Bukkit does not support changing the online player count with the ServerListPingEvent for obvious reasons, but PingAPI does. You can easily do this by invoking PingReply#setOnlinePlayers(int). Here is an example.
 
 <pre>
 public class MyListener implements PingListener {
@@ -47,6 +47,23 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-This is the output.
+This is the output
 
 <img src="http://i.imgur.com/ZsavWWd.png"></img>
+
+<h3>Changing the player count to text</h3>
+The client sends a ping packet to the server and it replies with all your information including the server's protocol version and compares it to that of the client. If the protocol version's do not match it displays a red message in replacement of the player count such as "Spigot 1.8" We can use this and send a fake protocol version such as -1 and change the default protocol name message to a new one. Here is an example.
+
+<pre>
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        PingReply reply = event.getReply();
+        reply.setProtocolVersion(-1);
+        reply.setProtocolName(ChatColor.GREEN + "This is a message...");
+    }
+}
+</pre>
+
+The result would look like this
+
+<img src="http://i.imgur.com/JwaX1Im.png"></img>
