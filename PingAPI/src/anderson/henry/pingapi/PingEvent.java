@@ -1,6 +1,7 @@
 package anderson.henry.pingapi;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import org.bukkit.Bukkit;
 
@@ -40,7 +41,7 @@ public class PingEvent {
 	        Class<?> packet = Class.forName("anderson.henry.pingapi." + version + ".ServerInfoPacketHandler");
 	        Constructor<?> constructor = packet.getDeclaredConstructor(reply.getClass());
 			return (ServerInfoPacket) constructor.newInstance(reply);
-		} catch(Exception e) {
+		} catch(ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return null;

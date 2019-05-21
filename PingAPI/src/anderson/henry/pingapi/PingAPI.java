@@ -19,7 +19,8 @@ public class PingAPI extends JavaPlugin {
         	        Class<?> injector = Class.forName("anderson.henry.pingapi." + version + ".PingInjector");
         	        Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
         	        this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
-		} catch(Exception e) {
+		
+		} catch(ClassNotFoundException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException e) {
 		    	this.getLogger().log(Level.SEVERE, "No compatible server version!", e);
 		    	Bukkit.getPluginManager().disablePlugin(this);
 		}
