@@ -28,8 +28,6 @@ Now that we have created the PingListener we need to actually register it. You c
 public class MyPlugin extends JavaPlugin {
     public void onEnable() {
         PingAPI.registerListener(new PingListener() {
-        
-            @Override
             public void onPing(PingEvent event) {
                 event.getReply().setMOTD("This is an MOTD");
             }
@@ -37,3 +35,18 @@ public class MyPlugin extends JavaPlugin {
     }
 }
 </pre>
+
+<h3>Changing the player count</h3>
+Bukkit does not support changing the online player count with the ServerListPingEvent for obvious reasons, but PingAPI does. You can easily do this by invoking PingReply#setOnlinePlayers(int). Here is an example:
+
+<pre>
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        event.getReply().setOnlinePlayers(5000);
+    }
+}
+</pre>
+
+This is the output.
+
+<img src="http://i.imgur.com/ZsavWWd.png"></img>
