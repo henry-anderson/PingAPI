@@ -84,3 +84,34 @@ public class MyListener implements PingListener {
     }
 }
 </pre>
+
+<h3>Animations</h3>
+Unfortunetly this is no longer possible, but servers running 1.8 or earlier can still make use of this feature.
+
+PingAPI makes it easy to send multiple PacketStatusOutServerInfo packets. When the 'onPing' method is finished it constructs a new PacketStatusOutServerInfo packet based on the properties in the PingReply object. If the PingEvent is cancelled (Use PingEvent#setCancelled(boolean)) it won't send the packet. Here is an example of cancelling the original packet, but creating and sending a different one which is redundant, but a good example.
+
+<pre>
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        ServerInfoPacket packet = event.createNewPacket(event.getReply());
+        packet.send();
+        event.setCancelled(true);
+    }
+}
+</pre>
+
+The ServerInfoPacket is basically a simple PacketStatusOutServerInfo wrapper which creates and sends a new packet based on the information stored in the PingReply object.
+It's worth noting that the 'onPing' method is not invoked on the main thread. That said you can easily create an animated motd, but after a few seconds the client will close the connection and you will no longer be able to send PacketStatusOutServerInfo packets.
+
+Here is an example of an animated MOTD
+
+<pre>
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        for(int i = 0; i < 1000; i++) {
+        ServerInfoPacket packet = event.createNewPacket(event.getReply());
+        packet.send();
+        event.setCancelled(true);
+    }
+}
+</pre>
