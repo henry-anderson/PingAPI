@@ -11,6 +11,9 @@ It has been a few years since I have worked on this project, but I decided to up
 - Hide the player count
 - Create server list animations (1.8 or before)
 
+# Javadocs
+<a href="http://henry-anderson.github.io/PingAPI/">The Javadocs can be found here</a>
+
 # Usage
 <h3>Creating a basic listener</h3>
 
