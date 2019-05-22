@@ -25,10 +25,18 @@ public class PingAPI extends JavaPlugin {
 		}
 	}
 	
+	/**
+	 * Registers a new PingListener instance
+	 * @param listener The PingListener implementation
+	 */
 	public static void registerListener(PingListener listener) {
 		listeners.add(listener);
 	}
 	
+	/**
+	 * Returns a List of all PingListener's that have been registered
+	 * @return Return's a List of PingListener
+	 */
 	public static List<PingListener> getListeners() {
 		return listeners;
 	}
