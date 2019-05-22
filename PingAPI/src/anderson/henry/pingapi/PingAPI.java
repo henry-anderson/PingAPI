@@ -15,13 +15,12 @@ public class PingAPI extends JavaPlugin {
 		try {
 			PingAPI.listeners = new ArrayList<PingListener>();
 			String name = Bukkit.getServer().getClass().getPackage().getName();
-        	        String version = name.substring(name.lastIndexOf('.') + 1);
-        	        Class<?> injector = Class.forName("anderson.henry.pingapi." + version + ".PingInjector");
-        	        Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
-        	        this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
-		
+			String version = name.substring(name.lastIndexOf('.') + 1);
+        	Class<?> injector = Class.forName("anderson.henry.pingapi." + version + ".PingInjector");
+        	Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
+        	this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
 		} catch(ClassNotFoundException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException e) {
-		    	this.getLogger().log(Level.SEVERE, "No compatible server version!", e);
+		    	this.getLogger().log(Level.SEVERE, "Non compatible server version!", e);
 		    	Bukkit.getPluginManager().disablePlugin(this);
 		}
 	}
