@@ -110,18 +110,18 @@ Here is an example of an animated MOTD. First we create a BukkitRunnable subclas
 
 <pre>
 public class MyRunnable extends BukkitRunnable {
-	private PingEvent event;
-	private String motd;
-	
-	public MyRunnable(PingEvent event, String motd) {
-		this.event = event;
-		this.motd = motd;
-	}
-	public void run() {
-		this.event.getReply().setMOTD(this.motd);
-		ServerInfoPacket packet = event.createNewPacket(event.getReply());
+    private PingEvent event;
+    private String motd;
+    
+    public MyRunnable(PingEvent event, String motd) {
+        this.event = event;
+        this.motd = motd;
+    }
+    public void run() {
+        this.event.getReply().setMOTD(this.motd);
+	ServerInfoPacket packet = event.createNewPacket(event.getReply());
         packet.send();
-	}
+    }
 }
 </pre>
 
@@ -133,12 +133,12 @@ public class MyListener implements PingListener {
         event.setCancelled(true);
         event.cancelPong(true);
         Plugin plugin = MyPlugin.getPlugin();
-	    BukkitScheduler scheduler = Bukkit.getScheduler();
-	    Plugin plugin = PingAPI.getPlugin();
-		BukkitScheduler scheduler = Bukkit.getScheduler();
-		for(int i = 0; i < 10; i++) {
-		    scheduler.runTaskLater(plugin, new MyRunnable(event, "MOTD " + (i + 1)), i * 10);
-	    }
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+        Plugin plugin = PingAPI.getPlugin();
+        BukkitScheduler scheduler = Bukkit.getScheduler();
+        for(int i = 0; i < 10; i++) {
+            scheduler.runTaskLater(plugin, new MyRunnable(event, "MOTD " + (i + 1)), i * 10);
+        }
     }
 }
 </pre>
