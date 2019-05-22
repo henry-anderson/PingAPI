@@ -11,9 +11,10 @@ It has been a few years since I have worked on this project, but I decided to up
 - Hide the player count
 - Create server list animations (1.8 or before)
 
+# Javadocs
+<a href="http://henry-anderson.github.io/PingAPI/">The Javadocs can be found here</a>
+
 # Usage
-<h3>Javadocs</h3>
-<a href="http://henry-anderson.github.io/PingAPI/">You can view the Javadocs here</a>
 <h3>Creating a basic listener</h3>
 
 To use PingAPI to its full potential you have to create a Listener. This is done similar to registering a Bukkit listener. Before we actually register it we need to create it. You can either create a new class that implements 'PingListener,' or just an anonymous inner class. Here is a simple example of a PingListener.
