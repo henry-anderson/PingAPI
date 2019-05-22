@@ -74,18 +74,21 @@ public class DuplexHandler extends ChannelDuplexHandler {
 	}
 	
 	private PacketStatusOutServerInfo constructPacket(PingReply reply) {
-		GameProfile[] sample = new GameProfile[reply.getPlayerSample().size()];
-		List<String> list = reply.getPlayerSample();
-		for(int i = 0; i < list.size(); i++) {
-			sample[i] = new GameProfile(UUID.randomUUID(), list.get(i));
+		GameProfile[] sample = new GameProfile[0];
+		if(!reply.isPlayerSampleHidden()) {
+			sample = new GameProfile[reply.getPlayerSample().size()];
+			List<String> list = reply.getPlayerSample();
+			for (int i = 0; i < list.size(); i++) {
+				sample[i] = new GameProfile(UUID.randomUUID(), list.get(i));
+			}
 		}
 		ServerPingPlayerSample playerSample = new ServerPingPlayerSample(reply.getMaxPlayers(), reply.getOnlinePlayers());
-        playerSample.a(sample);
-        ServerPing ping = new ServerPing();
-        ping.setMOTD(new ChatComponentText(reply.getMOTD()));
-        ping.setPlayerSample(playerSample);
+		playerSample.a(sample);
+		ServerPing ping = new ServerPing();
+		ping.setMOTD(new ChatComponentText(reply.getMOTD()));
+		ping.setPlayerSample(playerSample);
         ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
-        ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
-        return new PacketStatusOutServerInfo(ping);
+		ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
+		return new PacketStatusOutServerInfo(ping);
 	}
 }

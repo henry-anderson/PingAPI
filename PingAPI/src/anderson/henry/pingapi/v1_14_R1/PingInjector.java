@@ -69,7 +69,7 @@ public class PingInjector implements Listener {
 	public void serverListPing(ServerListPingEvent event) {
 		this.injectOpenConnections();
 	}
-	
+
 	@EventHandler
 	public void onJoin(PlayerJoinEvent event) {
 		this.injectOpenConnections();

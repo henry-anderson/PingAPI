@@ -18,7 +18,7 @@ public class PingReply {
 	private int protocolVersion;
 	private String protocolName;
 	private List<String> playerSample;
-	private boolean hidePlayers = false;
+	private boolean hidePlayerSample = false;
 	private CachedServerIcon icon = Bukkit.getServerIcon();
 	
 	public PingReply(Object ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, List<String> playerSample) {
@@ -55,8 +55,8 @@ public class PingReply {
 		return this.playerSample;
 	}
 	
-	public boolean arePlayersHidden() {
-		return this.hidePlayers;
+	public boolean isPlayerSampleHidden() {
+		return this.hidePlayerSample;
 	}
 	
 	public CachedServerIcon getIcon() {
@@ -87,8 +87,8 @@ public class PingReply {
 		this.playerSample = playerSample;
 	}
 	
-	public void hidePlayers(boolean hide) {
-		this.hidePlayers = hide;
+	public void hidePlayerSample(boolean hide) {
+		this.hidePlayerSample = hide;
 	}
 	
 	public void setIcon(CachedServerIcon icon) {
