@@ -2,6 +2,8 @@
 
 PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>
 
+It's been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep back. I will try to keep it maintained and up to date from now on. The most important aspect here to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit
+
 # Features
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
@@ -9,7 +11,7 @@ PingAPI gives you more control over how you reply to ping requests. You can down
 - Hide the player count
 - Create server list animations (1.8 or before)
 
-# Tutorials
+# Usage
 <h3>Creating a basic listener</h3>
 
 To use PingAPI to its full potential you have to create a Listener. This is done similar to registering a Bukkit listener. Before we actually register it we need to create it. You can either create a new class that implements 'PingListener,' or just an anonymous inner class. Here is a simple example of a PingListener.
