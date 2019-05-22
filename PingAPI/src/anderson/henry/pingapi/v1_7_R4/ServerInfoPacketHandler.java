@@ -1,6 +1,7 @@
 package anderson.henry.pingapi.v1_7_R4;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 			Method writeAndFlush = ctx.getClass().getMethod("writeAndFlush", Object.class);
 			writeAndFlush.setAccessible(true);
 			writeAndFlush.invoke(ctx, this.constructPacket());
-		} catch(Exception e) {
+		} catch(NoSuchFieldException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
 	}
@@ -54,12 +55,12 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 			sample[i] = new GameProfile(UUID.randomUUID(), list.get(i));
 		}
 		ServerPingPlayerSample playerSample = new ServerPingPlayerSample(reply.getMaxPlayers(), reply.getOnlinePlayers());
-                playerSample.a(sample);
-                ServerPing ping = new ServerPing();
-                ping.setMOTD(new ChatComponentText(reply.getMOTD()));
-                ping.setPlayerSample(playerSample);
-                ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
-                ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
-                return new PacketStatusOutServerInfo(ping);
+		playerSample.a(sample);
+		ServerPing ping = new ServerPing();
+		ping.setMOTD(new ChatComponentText(reply.getMOTD()));
+		ping.setPlayerSample(playerSample);
+		ping.setServerInfo(new ServerPingServerData(reply.getProtocolName(), reply.getProtocolVersion()));
+		ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
+		return new PacketStatusOutServerInfo(ping);
 	}
 }

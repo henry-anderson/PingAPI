@@ -1,6 +1,7 @@
 package anderson.henry.pingapi.v1_7_R3;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 			Method writeAndFlush = ctx.getClass().getMethod("writeAndFlush", Object.class);
 			writeAndFlush.setAccessible(true);
 			writeAndFlush.invoke(ctx, this.constructPacket());
-		} catch(Exception e) {
+		} catch(NoSuchFieldException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
 	}

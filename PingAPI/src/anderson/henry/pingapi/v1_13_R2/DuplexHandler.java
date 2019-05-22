@@ -64,9 +64,9 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			for(int i = 0; i < profiles.length; i++) {
 				list.add(profiles[i].getName());
 			}
-			PingReply reply = new PingReply(ctx, motd, online, max, protocolVersion, protocolName, list);
+			PingReply reply = new PingReply(motd, online, max, protocolVersion, protocolName, list);
 			return reply;
-		} catch(Exception e) {
+		} catch(IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		return null;
