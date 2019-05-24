@@ -1,4 +1,4 @@
-package anderson.henry.pingtext;
+package org.henrya.pingtext;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import anderson.henry.pingapi.PingAPI;
+import org.henrya.pingapi.PingAPI;
 
 public class PingText extends JavaPlugin {
 	private YamlConfiguration config;

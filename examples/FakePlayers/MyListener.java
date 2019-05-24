@@ -1,11 +1,11 @@
-package anderson.henry.fakeplayers;
+package org.henrya.fakeplayers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import anderson.henry.pingapi.PingEvent;
-import anderson.henry.pingapi.PingListener;
-import anderson.henry.pingapi.PingReply;
+import org.henrya.pingapi.PingEvent;
+import org.henrya.pingapi.PingListener;
+import org.henrya.pingapi.PingReply;
 
 public class MyListener implements PingListener {
 	private YamlConfiguration config;

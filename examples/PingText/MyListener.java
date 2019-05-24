@@ -1,12 +1,11 @@
-package anderson.henry.pingtext;
+package org.henrya.pingtext;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
-
-import anderson.henry.pingapi.PingEvent;
-import anderson.henry.pingapi.PingListener;
-import anderson.henry.pingapi.PingReply;
+import org.henrya.pingapi.PingEvent;
+import org.henrya.pingapi.PingListener;
+import org.henrya.pingapi.PingReply;
 
 public class MyListener implements PingListener {
 	private YamlConfiguration config;
