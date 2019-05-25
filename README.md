@@ -1,8 +1,8 @@
-![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg)
-
 <img src="http://i.imgur.com/vIWvOUv.gif"></img>
 
-PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>
+PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>.  
+
+![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg)
 
 It has been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep backwards compatibility. I will try to keep it maintained and up to date from now on. The most important change to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit.
 
