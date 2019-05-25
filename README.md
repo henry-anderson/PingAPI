@@ -7,7 +7,6 @@ PingAPI gives you more control over how you reply to ping requests. You can down
 It has been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep backwards compatibility. I will try to keep it maintained and up to date from now on. The most important change to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit.
 
 <img src="http://i.imgur.com/vIWvOUv.gif"></img>
-
 ## Features
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
