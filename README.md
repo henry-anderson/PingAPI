@@ -1,6 +1,6 @@
 # PingAPI
 
-<img src="https://img.shields.io/badge/minecraft-1.14.1-blue.svg"> <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg"> ![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg)
+<img src="https://img.shields.io/badge/minecraft-1.14.1-blue.svg"> <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg"> <a href="https://github.com/henry-anderson/PingAPI/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> ![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg) 
 
 PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>.  
 
