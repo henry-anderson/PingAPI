@@ -1,23 +1,25 @@
-<img src="http://i.imgur.com/vIWvOUv.gif"></img>
-
-PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>.  
+# PingAPI
 
 ![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg)
 
+PingAPI gives you more control over how you reply to ping requests. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>.  
+
+<img src="http://i.imgur.com/vIWvOUv.gif"></img>
+
 It has been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep backwards compatibility. I will try to keep it maintained and up to date from now on. The most important change to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit.
 
-# Features
+## Features
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
 - Fake the protocol name and version to display text instead of the player count
 - Hide the player count
 - Create server list animations (1.8 or before)
 
-# Javadocs
+## Javadocs
 <a href="http://henry-anderson.github.io/PingAPI/">The Javadocs can be found here</a>
 
-# Usage
-<h3>Creating a basic listener</h3>
+## Usage
+### Creating a basic listener
 
 To use PingAPI to its full potential you have to create a Listener. This is done similar to registering a Bukkit listener. Before we actually register it we need to create it. You can either create a new class that implements 'PingListener,' or just an anonymous inner class. Here is a simple example of a PingListener.
 
@@ -43,7 +45,7 @@ public class MyPlugin extends JavaPlugin {
 }
 </pre>
 
-<h3>Changing the player count</h3>
+### Changing the player count
 
 <img src="http://i.imgur.com/ZsavWWd.png"></img>
 
@@ -57,7 +59,7 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-<h3>Changing the player count to text</h3>
+### Changing the player count to text
 
 <img src="http://i.imgur.com/JwaX1Im.png"></img>
 
@@ -73,7 +75,7 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-<h3>Changing the player sample (hover message)</h3>
+### Changing the player sample (hover message)
 
 <img src="http://i.imgur.com/m7TmDgs.png"></img>
 
@@ -92,7 +94,7 @@ public class MyListener implements PingListener {
 }
 </pre>
 
-<h3>Animations</h3>
+### Animations
 
 <img src="https://i.imgur.com/LAQCN0K.gif"></img>
 
