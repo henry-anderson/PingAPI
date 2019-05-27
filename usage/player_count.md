@@ -11,3 +11,4 @@ public class MyListener implements PingListener {
     }
 }
 ```
+As displayed in the image above this will change the player count that shows up on the client's server list to 5000.
