@@ -1,6 +1,6 @@
 ## Changing the player sample
 
-<img src="http://i.imgur.com/m7TmDgs.png"></img>
+[<img src="https://i.imgur.com/N4Rauya.png">]()
 
 When you hover over the player count it displays a list of a few random player's names. This list contains a maximum of 10 names. Unlike Bukkit, PingAPI lets you modify this list and allows you to change it to any text instead of just player names.
 
