@@ -1,4 +1,4 @@
-# Changing the player sample
+## Changing the player sample
 
 <img src="http://i.imgur.com/m7TmDgs.png"></img>
 
