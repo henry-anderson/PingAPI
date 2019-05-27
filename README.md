@@ -1,6 +1,6 @@
-# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">]() [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">]() [<img src="https://img.shields.io/badge/release-v1.1.1-blue.svg">]() [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
+# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.1.1-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
 
-[<img src="https://i.imgur.com/CZm3X3M.gif" width="100%">]()
+[<img src="https://i.imgur.com/CZm3X3M.gif" width="100%">](README.md)
 
 PingAPI gives Bukkit developers more control over how they reply to ping requests. Simply put it provides an improvement to Bukkit's ServerListPingEvent. You can download it <a href="http://www.spigotmc.org/resources/pingapi.3829/">here</a>.  
 
@@ -14,7 +14,7 @@ It has been a few years since I have worked on this project, but I decided to up
 - Create server list animations (1.8 or before)
 
 ## Javadocs
-<a href="http://henry-anderson.github.io/PingAPI/">The Javadocs can be found here</a>
+[The Javadocs can be found here](http://henry-anderson.github.io/PingAPI/)
 
 ## Usage
 - [Creating a basic listener](usage/listener.md)
