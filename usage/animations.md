@@ -47,8 +47,6 @@ public class MyListener implements PingListener {
         event.cancelPong(true);
         Plugin plugin = MyPlugin.getPlugin();
         BukkitScheduler scheduler = Bukkit.getScheduler();
-        Plugin plugin = PingAPI.getPlugin();
-        BukkitScheduler scheduler = Bukkit.getScheduler();
         for(int i = 0; i < 10; i++) {
             scheduler.runTaskLater(plugin, new MyRunnable(event, "MOTD " + (i + 1)), i * 10);
         }
