@@ -1,8 +1,6 @@
 # PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.1.1-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
 
-<p align="center">
-<img src="https://i.imgur.com/CZm3X3M.gif">
-</p>
+[<img src="https://i.imgur.com/CZm3X3M.gif">](README.md)
 
 PingAPI gives Bukkit developers more control over how they reply to ping requests. Simply put it provides an improvement to Bukkit's ServerListPingEvent. You can download it [here](http://www.spigotmc.org/resources/pingapi.3829/).
 
