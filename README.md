@@ -10,7 +10,6 @@ It has been a few years since I have worked on this project, but I decided to up
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
 - Fake the protocol name and version to display text instead of the player count
-- Hide the player count
 - Create server list animations (1.8 or before)
 
 ## Javadocs
