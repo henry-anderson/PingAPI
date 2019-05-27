@@ -21,4 +21,4 @@ It has been a few years since I have worked on this project, but I decided to up
 - [Changing the player count](usage/player_count.md)
 - [Changing the player count to text](usage/player_count_to_text.md)
 - [Changing the player sample (hover message)](usage/player_sample.md)
-- [Animations](usage/animations.md)
+- [Creating animations](usage/animations.md)
