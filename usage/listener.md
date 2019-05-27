@@ -1,4 +1,4 @@
-# Creating a basic listener
+## Creating a basic listener
 
 To use PingAPI to its full potential you have to create a Listener. This is done similar to creating a Bukkit listener. You can either create a new class that implements PingListener, or just an anonymous inner class. Here is a simple example of a PingListener implementation.
 
