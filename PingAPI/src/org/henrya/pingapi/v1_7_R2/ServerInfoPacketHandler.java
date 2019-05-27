@@ -17,19 +17,18 @@ import net.minecraft.server.v1_7_R2.ServerPingPlayerSample;
 import net.minecraft.server.v1_7_R2.ServerPingServerData;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 
-public class ServerInfoPacketHandler implements ServerInfoPacket {
-	private PingReply reply;
+public class ServerInfoPacketHandler extends ServerInfoPacket {
 	
 	public ServerInfoPacketHandler(PingReply reply) {
-		this.reply = reply;
+		super(reply);
 	}
 	
 	@Override
 	public void send() {
 		try {
-			Field field = this.reply.getClass().getDeclaredField("ctx");
+			Field field = this.getReply().getClass().getDeclaredField("ctx");
 			field.setAccessible(true);
-			Object ctx = field.get(this.reply);
+			Object ctx = field.get(this.getReply());
 			Method writeAndFlush = ctx.getClass().getMethod("writeAndFlush", Object.class);
 			writeAndFlush.setAccessible(true);
 			writeAndFlush.invoke(ctx, this.constructPacket());
@@ -38,17 +37,8 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 		}
 	}
 	
-	@Override
-	public PingReply getPingReply() {
-		return this.reply;
-	}
-	
-	@Override
-	public void setPingReply(PingReply reply) {
-		this.reply = reply;
-	}
-	
 	private PacketStatusOutServerInfo constructPacket() {
+		PingReply reply = this.getReply();
 		GameProfile[] sample = new GameProfile[reply.getPlayerSample().size()];
 		List<String> list = reply.getPlayerSample();
 		for(int i = 0; i < list.size(); i++) {

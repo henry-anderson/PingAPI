@@ -17,11 +17,11 @@ import net.minecraft.server.v1_7_R3.ServerPingPlayerSample;
 import net.minecraft.server.v1_7_R3.ServerPingServerData;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 
-public class ServerInfoPacketHandler implements ServerInfoPacket {
+public class ServerInfoPacketHandler extends ServerInfoPacket {
 	private PingReply reply;
 	
 	public ServerInfoPacketHandler(PingReply reply) {
-		this.reply = reply;
+		super(reply);
 	}
 	
 	@Override
@@ -36,16 +36,6 @@ public class ServerInfoPacketHandler implements ServerInfoPacket {
 		} catch(NoSuchFieldException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	public PingReply getPingReply() {
-		return this.reply;
-	}
-	
-	@Override
-	public void setPingReply(PingReply reply) {
-		this.reply = reply;
 	}
 	
 	private PacketStatusOutServerInfo constructPacket() {

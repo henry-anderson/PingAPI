@@ -4,22 +4,31 @@ package org.henrya.pingapi;
  * An interface for creating PacketStatusOutServerInfo from PingReply instances 
  * @author Henry Anderson
  */
-public interface ServerInfoPacket {
+public abstract class ServerInfoPacket {
+	private PingReply reply;
+	
+	public ServerInfoPacket(PingReply reply) {
+		this.reply = reply;
+	}
 	
 	/**
 	 * Sends the packet to the server 
 	 */
-	public void send();
+	public abstract void send();
 	
 	/**
 	 * Returns the PingReply instance
 	 * @return The reply
 	 */
-	public PingReply getPingReply();
+	public PingReply getReply() {
+		return this.reply;
+	}
 	
 	/**
 	 * Sets the PingReply instance
 	 * @param reply The reply
 	 */
-	public void setPingReply(PingReply reply);
+	public void setReply(PingReply reply) {
+		this.reply = reply;
+	}
 }
