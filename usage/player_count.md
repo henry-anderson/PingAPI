@@ -1,6 +1,6 @@
 ## Changing the player count
 
-<img src="http://i.imgur.com/ZsavWWd.png"></img>
+[<img src="https://i.imgur.com/1qM4dCk.png">]()
 
 Bukkit does not support changing the online player count with the ServerListPingEvent, but PingAPI does. You can easily do this by invoking PingReply#setOnlinePlayers(int). Here is an example.
 
