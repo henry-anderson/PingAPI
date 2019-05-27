@@ -1,4 +1,4 @@
-# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.1.1-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
+# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/animations-1.7.5%20--%201.8.3-blueviolet.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.2.0-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
 
 [<img src="https://i.imgur.com/CZm3X3M.gif">](README.md)
 
@@ -10,7 +10,7 @@ It has been a few years since I have worked on this project, but I decided to up
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
 - Fake the protocol name and version to display text instead of the player count
-- Create server list animations (1.8 or before)
+- Create server list animations (1.8.3 or before)
 
 ## Javadocs
 [The Javadocs can be found here](http://henry-anderson.github.io/PingAPI/)
