@@ -1,4 +1,4 @@
-# Changing the player count
+## Changing the player count
 
 <img src="http://i.imgur.com/ZsavWWd.png"></img>
 
