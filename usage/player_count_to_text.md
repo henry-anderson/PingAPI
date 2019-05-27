@@ -1,6 +1,6 @@
 ## Changing the player count to text
 
-<img src="http://i.imgur.com/JwaX1Im.png"></img>
+[<img src="https://i.imgur.com/UE7RSvS.png">]()
 
 The client sends a ping packet to the server and it replies with all of the server's information including the server's protocol version and compares it to that of the client. If the protocol version's do not match it displays a red message in replacement of the player count such as "Spigot 1.8."
 
