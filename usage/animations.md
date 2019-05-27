@@ -2,7 +2,7 @@
 
 <img src="https://i.imgur.com/LAQCN0K.gif"></img>
 
-Unfortunately this is no longer possible, but servers running 1.8 or earlier can still make use of this feature.
+Unfortunately this is no longer possible, but servers running 1.8.3 or earlier can still make use of this feature.
 
 PingAPI makes it easy to send multiple PacketStatusOutServerInfo packets. When the 'onPing' method is finished it constructs a new PacketStatusOutServerInfo packet based on the properties in the PingReply object. If the PingEvent is cancelled (Use PingEvent#setCancelled(boolean)) it won't send the packet. Here is an example of cancelling the original packet, but creating and sending a different one which is redundant, but a good example.
 
