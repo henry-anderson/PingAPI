@@ -1,4 +1,4 @@
-# Animations
+## Animations
 
 <img src="https://i.imgur.com/LAQCN0K.gif"></img>
 
@@ -17,7 +17,7 @@ public class MyListener implements PingListener {
 ```
 
 The ServerInfoPacket is basically a simple PacketStatusOutServerInfo wrapper which creates and sends a new packet based on the information stored in the PingReply object.
-It's worth noting that the 'onPing' method is not invoked on the main thread. That said you can easily create an animated motd, but after a few seconds the client will close the connection and you will no longer be able to send PacketStatusOutServerInfo packets.
+It's worth noting that the 'onPing' method is not invoked on the main thread. That said you can easily create an animated MOTD, but after a few seconds the client will close the connection and you will no longer be able to send PacketStatusOutServerInfo packets.
 
 Here is an example of an animated MOTD. First we create a BukkitRunnable subclass and pass our PingEvent instance and a String representing the MOTD to set.
 
