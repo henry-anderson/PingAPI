@@ -1,4 +1,9 @@
-# PingAPI <img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg"> <img src="https://img.shields.io/badge/spigot-1.7.5%20--%201.14.1-critical.svg"> <img src="https://img.shields.io/badge/release-v1.1.1-blue.svg"> <a href="https://github.com/henry-anderson/PingAPI/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a> ![Spiget Downloads](https://img.shields.io/spiget/downloads/3829.svg?color=blue)
+# PingAPI
+[<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">]()
+[<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">]()
+[<img src="https://img.shields.io/badge/release-v1.1.1-blue.svg">]() 
+[<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE)
+[<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
 
 <img src="http://i.imgur.com/vIWvOUv.gif"></img>
 
