@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.henrya.pingapi.reflect.ReflectUtils;
 
@@ -30,7 +29,7 @@ public class PingInjector implements Listener {
 			this.server = (MinecraftServer) console.get(craftserver);
 			ServerConnection conn = this.server.am();
 			networkManagers = Collections.synchronizedList((List<?>) this.getNetworkManagerList(conn));
-		} catch(NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+		} catch(IllegalAccessException | NoSuchFieldException e) {
 			e.printStackTrace();
 		}
 	}
@@ -45,7 +44,7 @@ public class PingInjector implements Listener {
 					channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
 				}
 			}
-		} catch(SecurityException | IllegalArgumentException | IllegalAccessException e) {
+		} catch(IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -59,7 +58,7 @@ public class PingInjector implements Listener {
 					return object;
 				}
 			}
-		} catch(SecurityException | IllegalArgumentException | IllegalAccessException | InvocationTargetException e) {
+		} catch(IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -67,11 +66,6 @@ public class PingInjector implements Listener {
 	
 	@EventHandler
 	public void serverListPing(ServerListPingEvent event) {
-		this.injectOpenConnections();
-	}
-	
-	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
 		this.injectOpenConnections();
 	}
 }

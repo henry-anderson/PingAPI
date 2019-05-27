@@ -34,12 +34,11 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		if(msg instanceof PacketStatusOutServerInfo) {
 			PacketStatusOutServerInfo packet = (PacketStatusOutServerInfo) msg;
 			PingReply reply = this.constructReply(packet, ctx);
-			PingEvent event = new PingEvent(reply);
+			this.event = new PingEvent(reply);
 			for(PingListener listener : PingAPI.getListeners()) {
 				listener.onPing(event);
 			}
-			this.event = event;
-			if(!event.isCancelled()) {
+			if(!this.event.isCancelled()) {
 				super.write(ctx, this.constructPacket(reply), promise);
 			}
 			return;

@@ -23,6 +23,7 @@ public class PingReply {
 	
 	/**
 	 * Creates a class to store data that will be sent to the client in a PacketStatusOutServerInfo packet
+	 * @param ctx The ChannelHandlerContext instance
 	 * @param motd The MOTD
 	 * @param onlinePlayers The amount of online players
 	 * @param maxPlayers The maximum amount of players

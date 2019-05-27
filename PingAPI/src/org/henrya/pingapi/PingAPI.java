@@ -23,7 +23,6 @@ public class PingAPI extends JavaPlugin {
 		    	this.getLogger().log(Level.SEVERE, "Non compatible server version!", e);
 		    	Bukkit.getPluginManager().disablePlugin(this);
 		}
-		PingAPI.registerListener(new MyListener(this));
 	}
 	
 	/**

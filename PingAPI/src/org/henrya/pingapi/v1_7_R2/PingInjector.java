@@ -1,6 +1,7 @@
 package org.henrya.pingapi.v1_7_R2;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public class PingInjector implements Listener {
 			this.server = (MinecraftServer) console.get(craftserver);
 			ServerConnection conn = this.server.ah();
 			networkManagers = Collections.synchronizedList((List<?>) this.getNetworkManagerList(conn));
-		} catch(Exception e) {
+		} catch(IllegalAccessException | NoSuchFieldException e) {
 			e.printStackTrace();
 		}
 	}
@@ -44,7 +45,7 @@ public class PingInjector implements Listener {
 					channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
 				}
 			}
-		} catch(Exception e) {
+		} catch(IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -58,7 +59,7 @@ public class PingInjector implements Listener {
 					return object;
 				}
 			}
-		} catch(Exception e) {
+		} catch(IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -68,5 +69,4 @@ public class PingInjector implements Listener {
 	public void serverListPing(ServerListPingEvent event) {
 		this.injectOpenConnections();
 	}
-
 }
