@@ -1,7 +1,7 @@
 package org.henrya.pingapi;
 
 /**
- * An interface for creating PacketStatusOutServerInfo from PingReply instances 
+ * An abstract class for creating PacketStatusOutServerInfo from PingReply instances 
  * @author Henry Anderson
  */
 public abstract class ServerInfoPacket {

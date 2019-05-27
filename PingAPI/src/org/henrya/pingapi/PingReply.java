@@ -9,7 +9,9 @@ import org.bukkit.util.CachedServerIcon;
  * A class that defines the data that will be sent to the client in a PacketStatusOutServerInfo packet
  * @author Henry Anderson
  */
+@SuppressWarnings("unused")
 public class PingReply {
+	private Object ctx;
 	private String motd;
 	private int onlinePlayers;
 	private int maxPlayers;
@@ -28,7 +30,8 @@ public class PingReply {
 	 * @param protocolName The name of the protocol
 	 * @param playerSample A list of player names
 	 */
-	public PingReply(String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, List<String> playerSample) {
+	public PingReply(Object ctx, String motd, int onlinePlayers, int maxPlayers, int protocolVersion, String protocolName, List<String> playerSample) {
+		this.ctx = ctx;
 		this.motd = motd;
 		this.onlinePlayers = onlinePlayers;
 		this.maxPlayers = maxPlayers;

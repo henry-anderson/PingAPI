@@ -65,7 +65,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			for (int i = 0; i < profiles.length; i++) {
 				list.add(profiles[i].getName());
 			}
-			PingReply reply = new PingReply(motd, online, max, protocolVersion, protocolName, list);
+			PingReply reply = new PingReply(ctx, motd, online, max, protocolVersion, protocolName, list);
 			return reply;
 		} catch(IllegalAccessException e) {
 			e.printStackTrace();
@@ -91,4 +91,15 @@ public class DuplexHandler extends ChannelDuplexHandler {
 		ping.setFavicon(((CraftIconCache) reply.getIcon()).value);
 		return new PacketStatusOutServerInfo(ping);
 	}
+	
+	/**
+	 * In versions 1.8 and higher the connection is closed after two packets have been sent
+	 * Overriding this method is required to create animations for versions 1.8 through 1.8.3
+	 */
+	@Override
+    public void close(ChannelHandlerContext ctx, ChannelPromise future) throws Exception {
+        if(this.event == null || !this.event.isPongCancelled()) {
+            super.close(ctx, future);
+        }
+    }
 }
