@@ -2,7 +2,9 @@
 
 <img src="http://i.imgur.com/m7TmDgs.png"></img>
 
-As you probably know, when you hover over the player count it displays a list of a few random player's names. This can easily be changed to your own message with PingAPI. Here is an example.
+When you hover over the player count it displays a list of a few random player's names. This list contains a maximum of 10 names. Unlike Bukkit, PingAPI lets you modify this list and allows you to change it to any text instead of just player names.
+
+Here is an example.
 
 ```java
 public class MyListener implements PingListener {
@@ -16,3 +18,14 @@ public class MyListener implements PingListener {
     }
 }
 ```
+
+It is also worth noting that there is a method in the PingReply class that will prevent this list from being sent all together.
+
+```java
+public class MyListener implements PingListener {
+    public void onPing(PingEvent event) {
+        event.getReply().hidePlayerSample();
+    }
+}
+```
+
