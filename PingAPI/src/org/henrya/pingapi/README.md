@@ -6,3 +6,6 @@ You can tell by looking above that there are a number of different packages with
 
 ### Abstraction
 I made use of abstraction so that I could handle the changes from each version of CraftBukkit accordingly. NMS classes are obfuscated so there are small changes that occur from version to version such as the method "a()" being changed to "c()." That is the reason I included a package for every major CraftBukkit update. I used reflection to instantiate the appropriate classes for the version of CraftBukkit that is being run and downcasted to the abstract class I created for the API.
+
+## Packet Sniffing
+In order to listen for outgoing packets I created a class called PingInjector. This class gets the list of NetworkManager instances and injects a subclass of ChannelDuplexHandler I created into each NetworkManager's pipeline. In my DuplexHandler class I overrode the write() method which sends the packet to the client. This way I was able to check whether the packet being sent was a PacketStatusOutServerInfo packet and modify the data appropriately
