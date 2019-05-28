@@ -9,3 +9,70 @@ I made use of abstraction so that I could handle the changes from each version o
 
 ## Packet Sniffing
 In order to listen for outgoing packets I created a class called PingInjector. This class gets the list of NetworkManager instances and injects a subclass of ChannelDuplexHandler I created into each NetworkManager's pipeline. In my DuplexHandler class I overrode the write() method which sends the packet to the client. This way I was able to check whether the packet being sent was a PacketStatusOutServerInfo packet and modify the data appropriately
+
+```java
+public class DuplexHandler extends ChannelDuplexHandler {
+	
+    @Override
+    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
+        if(msg instanceof PacketStatusOutServerInfo) {
+            //do something	
+        }
+        super.write(ctx, msg, promise);
+    }
+}
+```
+```java
+public class PingInjector implements Listener {
+    private MinecraftServer server;
+    private List<?> networkManagers;
+	
+    @EventHandler
+    public void serverListPing(ServerListPingEvent event) {
+        this.injectOpenConnections();
+    }
+  
+    public PingInjector() {
+        try {
+            CraftServer craftserver = (CraftServer) Bukkit.getServer();
+            Field console = craftserver.getClass().getDeclaredField("console");
+            console.setAccessible(true);
+            this.server = (MinecraftServer) console.get(craftserver);
+            ServerConnection conn = this.server.am();
+            networkManagers = Collections.synchronizedList((List<?>) this.getNetworkManagerList(conn));
+        } catch(IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+	
+    public void injectOpenConnections() {
+        try {
+            Field field = ReflectUtils.getFirstFieldByType(NetworkManager.class, Channel.class);
+            field.setAccessible(true);
+            for(Object manager : networkManagers) {
+                Channel channel = (Channel) field.get(manager);
+                if(channel.pipeline().context("ping_handler") == null && (channel.pipeline().context("packet_handler") != null)) {
+                channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
+            }
+        }
+        } catch(IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+	
+    public Object getNetworkManagerList(ServerConnection conn) {
+        try {
+            for(Method method : conn.getClass().getDeclaredMethods()) {
+                method.setAccessible(true);
+                if(method.getReturnType() == List.class) {
+                    Object object = method.invoke(null, conn);
+                    return object;
+                }
+            }
+        } catch(IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
+```
