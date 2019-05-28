@@ -23,4 +23,4 @@ It has been a few years since I have worked on this project, but I decided to up
 - [Creating animations](usage/animations.md)
 
 ## How It Works
-If you aren't interested in using PingAPI but are curious about how it works it is documented [here](https://github.com/henry-anderson/PingAPI/tree/master/PingAPI/src/org/henrya/pingapi#pingapi).
+If you aren't interested in using PingAPI but are curious about how it works, it is documented [here](https://github.com/henry-anderson/PingAPI/tree/master/PingAPI/src/org/henrya/pingapi#pingapi).
