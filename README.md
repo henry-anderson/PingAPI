@@ -6,10 +6,7 @@ PingAPI gives Bukkit developers more control over how they reply to ping request
 
 It has been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep backwards compatibility. I will try to keep it maintained and up to date from now on. The most important change to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit.
 
-<div style="height: 200px; position: relative;">
-  <h2>Features</h2><img src="https://img.shields.io/badge/animations-1.7.5%20--%201.8.3-blueviolet.svg">
-</div>
-</div>
+## Features [<img src="https://img.shields.io/badge/animations-1.7.5%20--%201.8.3-blueviolet.svg">](README.md)
 - Modify the online player count and the max players
 - Change the player sample (list of players shown when hovering over the player count)
 - Fake the protocol name and version to display text instead of the player count
