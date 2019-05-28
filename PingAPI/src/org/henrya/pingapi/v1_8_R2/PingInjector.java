@@ -23,6 +23,9 @@ public class PingInjector implements Listener {
 	private MinecraftServer server;
 	private List<?> networkManagers;
 	
+	/**
+	 * Constructs a new PingInjector and gets the list of open NetworkManager instances
+	 */
 	public PingInjector() {
 		try {
 			CraftServer craftserver = (CraftServer) Bukkit.getServer();
@@ -36,6 +39,10 @@ public class PingInjector implements Listener {
 		}
 	}
 	
+	/**
+	 * Iterates through every open NetworkManager and adds my ChannelDuplexHandler subclass into the pipeline
+	 * This allows you to listen for outgoing packets and modify them before they are sent
+	 */
 	public void injectOpenConnections() {
 		try {
 			Field field = ReflectUtils.getFirstFieldByType(NetworkManager.class, Channel.class);
@@ -51,6 +58,11 @@ public class PingInjector implements Listener {
 		}
 	}
 	
+	/**
+	 * Returns the list of open NetworkManager instances
+	 * @param conn The ServerConnection instance
+	 * @return A List of NetworkManager instances downcasted to an Object
+	 */
 	public Object getNetworkManagerList(ServerConnection conn) {
 		try {
 			for(Method method : conn.getClass().getDeclaredMethods()) {
@@ -66,6 +78,10 @@ public class PingInjector implements Listener {
 		return null;
 	}
 	
+	/**
+	 * Injects a DuplexHandler into each NetworkManager's pipeline when the server receives a ping packet
+	 * @param event The event
+	 */
 	@EventHandler
 	public void serverListPing(ServerListPingEvent event) {
 		this.injectOpenConnections();
