@@ -12,6 +12,10 @@ import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
 
+/**
+ * A class for listening to outgoing packets
+ * @author Henry Anderson
+ */
 public class DuplexHandler extends ChannelDuplexHandler {
 	private PingEvent event;
 	

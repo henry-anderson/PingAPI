@@ -12,6 +12,10 @@ import net.minecraft.util.io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
 import net.minecraft.util.io.netty.channel.ChannelPromise;
 
+/**
+ * A class for listening to outgoing packets
+ * @author Henry Anderson
+ */
 public class DuplexHandler extends ChannelDuplexHandler {
 	private PingEvent event;
 	

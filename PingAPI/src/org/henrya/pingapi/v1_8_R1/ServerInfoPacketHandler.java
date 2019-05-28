@@ -23,6 +23,10 @@ import com.mojang.authlib.GameProfile;
 
 import io.netty.channel.ChannelHandlerContext;
 
+/**
+ * A class that handles the sending of PacketStatusOutServerInfo packets
+ * @author Henry Anderson
+ */
 public class ServerInfoPacketHandler extends ServerInfoPacket {
 	private static final Field SERVER_PING_FIELD = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
 

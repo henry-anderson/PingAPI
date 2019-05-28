@@ -8,6 +8,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 
+/**
+ * An API that gives developers more control over how they reply to ping requests
+ * @author Henry Anderson
+ */
 public class PingAPI extends JavaPlugin {
 	private static List<PingListener> listeners;
 

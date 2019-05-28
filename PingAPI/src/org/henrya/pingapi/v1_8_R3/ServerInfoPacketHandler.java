@@ -21,6 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * A class that handles the sending of PacketStatusOutServerInfo packets
+ * @author Henry Anderson
+ */
 public class ServerInfoPacketHandler extends ServerInfoPacket {
 	private static final Field SERVER_PING_FIELD = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
 	

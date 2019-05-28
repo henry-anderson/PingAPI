@@ -10,6 +10,10 @@ import org.henrya.pingapi.PingEvent;
 import org.henrya.pingapi.PingListener;
 import org.henrya.pingapi.PingReply;
 
+/**
+ * A class for listening to outgoing packets
+ * @author Henry Anderson
+ */
 public class DuplexHandler extends ChannelDuplexHandler {
 	private PingEvent event;
 	

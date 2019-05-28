@@ -21,6 +21,10 @@ import net.minecraft.server.v1_7_R4.ServerPingServerData;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
 
+/**
+ * A class that handles the sending of PacketStatusOutServerInfo packets
+ * @author Henry Anderson
+ */
 public class ServerInfoPacketHandler extends ServerInfoPacket {
 	private static final Field SERVER_PING_FIELD = ReflectUtils.getFirstFieldByType(PacketStatusOutServerInfo.class, ServerPing.class);
 	

@@ -17,6 +17,10 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A class that injects out packet listener into open NetworkManagers
+ * @author Henry Anderson
+ */
 public class PingInjector implements Listener {
 	private MinecraftServer server;
 	private List<?> networkManagers;

@@ -19,6 +19,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.henrya.pingapi.reflect.ReflectUtils;
 
+/**
+ * A class that injects out packet listener into open NetworkManagers
+ * @author Henry Anderson
+ */
 public class PingInjector implements Listener {
 	private MinecraftServer server;
 	private List<?> networkManagers;

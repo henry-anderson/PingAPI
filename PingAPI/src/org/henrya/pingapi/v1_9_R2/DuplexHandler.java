@@ -11,6 +11,10 @@ import io.netty.channel.ChannelPromise;
 import net.minecraft.server.v1_9_R2.PacketStatusOutPong;
 import net.minecraft.server.v1_9_R2.PacketStatusOutServerInfo;
 
+/**
+ * A class for listening to outgoing packets
+ * @author Henry Anderson
+ */
 public class DuplexHandler extends ChannelDuplexHandler {
 	private PingEvent event;
 	
