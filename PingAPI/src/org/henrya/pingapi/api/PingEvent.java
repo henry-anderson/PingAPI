@@ -1,4 +1,4 @@
-package org.henrya.pingapi;
+package org.henrya.pingapi.api;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

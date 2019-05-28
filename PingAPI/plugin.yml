@@ -1,3 +1,3 @@
 name: PingAPI
-main: org.henrya.pingapi.PingAPI
+main: org.henrya.pingapi.api.PingAPI
 version: 1.2.1

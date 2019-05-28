@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.craftbukkit.v1_7_R4.util.CraftIconCache;
-import org.henrya.pingapi.PingAPI;
-import org.henrya.pingapi.PingEvent;
-import org.henrya.pingapi.PingListener;
-import org.henrya.pingapi.PingReply;
+import org.henrya.pingapi.api.PingAPI;
+import org.henrya.pingapi.api.PingEvent;
+import org.henrya.pingapi.api.PingListener;
+import org.henrya.pingapi.api.PingReply;
 import org.henrya.pingapi.reflect.ReflectUtils;
 
 import net.minecraft.server.v1_7_R4.ChatComponentText;

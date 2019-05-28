@@ -1,4 +1,4 @@
-package org.henrya.pingapi;
+package org.henrya.pingapi.api;
 
 /**
  * An interface for creating PingAPI listeners

@@ -1,4 +1,4 @@
-package org.henrya.pingapi;
+package org.henrya.pingapi.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,8 @@ public class PingAPI extends JavaPlugin {
         	Bukkit.getPluginManager().registerEvents((Listener) injector.newInstance(), this);
         	this.getLogger().log(Level.INFO, "Successfully hooked into " + Bukkit.getServer().getName() + " " + version);
 		} catch(ClassNotFoundException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException e) {
-		    	this.getLogger().log(Level.SEVERE, "Non compatible server version!", e);
-		    	Bukkit.getPluginManager().disablePlugin(this);
+		    this.getLogger().log(Level.SEVERE, "Non compatible server version!", e);
+		    Bukkit.getPluginManager().disablePlugin(this);
 		}
 	}
 	

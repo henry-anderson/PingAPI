@@ -8,8 +8,8 @@ import net.minecraft.server.v1_8_R3.ServerPing;
 import net.minecraft.server.v1_8_R3.ServerPing.ServerData;
 import net.minecraft.server.v1_8_R3.ServerPing.ServerPingPlayerSample;
 import org.bukkit.craftbukkit.v1_8_R3.util.CraftIconCache;
-import org.henrya.pingapi.PingReply;
-import org.henrya.pingapi.ServerInfoPacket;
+import org.henrya.pingapi.api.PingReply;
+import org.henrya.pingapi.api.ServerInfoPacket;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

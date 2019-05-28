@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.craftbukkit.v1_8_R1.util.CraftIconCache;
-import org.henrya.pingapi.PingReply;
-import org.henrya.pingapi.ServerInfoPacket;
+import org.henrya.pingapi.api.PingReply;
+import org.henrya.pingapi.api.ServerInfoPacket;
 
 import net.minecraft.server.v1_8_R1.ChatComponentText;
 import net.minecraft.server.v1_8_R1.PacketStatusOutServerInfo;

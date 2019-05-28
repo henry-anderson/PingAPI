@@ -1,4 +1,4 @@
-package org.henrya.pingapi;
+package org.henrya.pingapi.api;
 
 /**
  * An abstract class for creating PacketStatusOutServerInfo from PingReply instances 

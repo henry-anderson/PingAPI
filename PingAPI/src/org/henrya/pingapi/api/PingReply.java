@@ -1,4 +1,4 @@
-package org.henrya.pingapi;
+package org.henrya.pingapi.api;
 
 import java.util.List;
 

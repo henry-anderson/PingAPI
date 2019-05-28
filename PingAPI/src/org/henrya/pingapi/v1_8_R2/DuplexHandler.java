@@ -15,10 +15,10 @@ import net.minecraft.server.v1_8_R2.ServerPing;
 import net.minecraft.server.v1_8_R2.ServerPing.ServerData;
 import net.minecraft.server.v1_8_R2.ServerPing.ServerPingPlayerSample;
 import org.bukkit.craftbukkit.v1_8_R2.util.CraftIconCache;
-import org.henrya.pingapi.PingAPI;
-import org.henrya.pingapi.PingEvent;
-import org.henrya.pingapi.PingListener;
-import org.henrya.pingapi.PingReply;
+import org.henrya.pingapi.api.PingAPI;
+import org.henrya.pingapi.api.PingEvent;
+import org.henrya.pingapi.api.PingListener;
+import org.henrya.pingapi.api.PingReply;
 import org.henrya.pingapi.reflect.ReflectUtils;
 
 import io.netty.channel.ChannelDuplexHandler;
