@@ -13,7 +13,6 @@ public class PingEvent {
 	private PingReply reply;
 	private boolean cancelEvent;
 	private boolean cancelPong;
-	private long pongPayload;
 	
 	/**
 	 * Created a new PingEvent instance
@@ -82,6 +81,10 @@ public class PingEvent {
 		return null;
 	}
 	
+	/**
+	 * Sends a pong packet to the client which closes the connection
+	 * The pong packet changes the icon to the right of the player count from red to green
+	 */
 	public void sendPong() {
 		try {
 			String name = Bukkit.getServer().getClass().getPackage().getName();
@@ -93,22 +96,5 @@ public class PingEvent {
 		} catch(ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Returns the payload for the pong request
-	 * The payload is only set if the pong was cancelled and after the ping event has passed
-	 * @return The payload
-	 */
-	public long getPongPayload() {
-		return pongPayload;
-	}
-
-	/**
-	 * Sets the payload for the pong request
-	 * @param pongPayload The payload
-	 */
-	public void setPongPayload(long pongPayload) {
-		this.pongPayload = pongPayload;
 	}
 }

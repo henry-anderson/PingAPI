@@ -36,7 +36,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 			return;
 		}
-		if(msg instanceof PacketStatusOutPong) {
+		else if(msg instanceof PacketStatusOutPong) {
 			if(this.event != null && this.event.isPongCancelled()) {
 				return;
 			}

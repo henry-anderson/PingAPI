@@ -28,7 +28,7 @@ public class PongPacketHandler extends PongPacket {
 	public void send() {
 		try {
 			PingReply reply = this.getEvent().getReply();
-			PacketStatusOutPong packet = new PacketStatusOutPong(this.getEvent().getPongPayload());
+			PacketStatusOutPong packet = new PacketStatusOutPong();
 			Field field = this.getEvent().getReply().getClass().getDeclaredField("ctx");
 			field.setAccessible(true);
 			Object ctx = field.get(reply);

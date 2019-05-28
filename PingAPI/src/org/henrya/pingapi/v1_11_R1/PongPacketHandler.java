@@ -12,7 +12,8 @@ import java.lang.reflect.Method;
  * A class that handles the sending of PacketStatusOutPong packets
  * @author Henry Anderson
  */
-public class PongPacketHandler extends PongPacket {	
+public class PongPacketHandler extends PongPacket {
+	
 	/**
 	 * Constructs a new ServerInfoPacketHandler from a PingEvent instance
 	 * @param reply The PingEvent instance
@@ -28,7 +29,7 @@ public class PongPacketHandler extends PongPacket {
 	public void send() {
 		try {
 			PingReply reply = this.getEvent().getReply();
-			PacketStatusOutPong packet = new PacketStatusOutPong(this.getEvent().getPongPayload());
+			PacketStatusOutPong packet = new PacketStatusOutPong();
 			Field field = this.getEvent().getReply().getClass().getDeclaredField("ctx");
 			field.setAccessible(true);
 			Object ctx = field.get(reply);

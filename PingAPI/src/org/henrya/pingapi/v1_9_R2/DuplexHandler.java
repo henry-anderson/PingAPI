@@ -36,14 +36,13 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 			return;
 		}
-		if(msg instanceof PacketStatusOutPong) {
+		else if(msg instanceof PacketStatusOutPong) {
 			if(this.event != null && this.event.isPongCancelled()) {
 				return;
 			}
 		}
 		super.write(ctx, msg, promise);
 	}
-	
 	
 	/**
 	 * In versions 1.8 and higher the connection is closed after two packets have been sent

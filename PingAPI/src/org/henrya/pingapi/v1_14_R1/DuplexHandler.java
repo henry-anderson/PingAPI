@@ -1,13 +1,9 @@
 package org.henrya.pingapi.v1_14_R1;
 
-import java.lang.reflect.Field;
-
 import org.henrya.pingapi.PingAPI;
 import org.henrya.pingapi.PingEvent;
 import org.henrya.pingapi.PingListener;
 import org.henrya.pingapi.PingReply;
-import org.henrya.pingapi.reflect.ReflectUtils;
-
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
@@ -31,20 +27,16 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			PacketStatusOutServerInfo packet = (PacketStatusOutServerInfo) msg;
 			PingReply reply = ServerInfoPacketHandler.constructReply(packet, ctx);
 			this.event = new PingEvent(reply);
-			for (PingListener listener : PingAPI.getListeners()) {
+			for(PingListener listener : PingAPI.getListeners()) {
 				listener.onPing(event);
 			}
-			if (!this.event.isCancelled()) {
+			if(!this.event.isCancelled()) {
 				super.write(ctx, ServerInfoPacketHandler.constructPacket(reply), promise);
 			}
 			return;
 		}
-		if(msg instanceof PacketStatusOutPong) {
-			Field field = ReflectUtils.getFirstFieldByType(msg.getClass(), long.class);
-			field.setAccessible(true);
-			long payload = field.getLong(msg);
-			if (this.event != null && this.event.isPongCancelled()) {
-				this.event.setPongPayload(payload);
+		else if(msg instanceof PacketStatusOutPong) {
+			if(this.event != null && this.event.isPongCancelled()) {
 				return;
 			}
 		}
