@@ -13,6 +13,7 @@ public class PingEvent {
 	private PingReply reply;
 	private boolean cancelEvent;
 	private boolean cancelPong;
+	private long pongPayload;
 	
 	/**
 	 * Created a new PingEvent instance
@@ -79,5 +80,35 @@ public class PingEvent {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public void sendPong() {
+		try {
+			String name = Bukkit.getServer().getClass().getPackage().getName();
+	        String version = name.substring(name.lastIndexOf('.') + 1);
+	        Class<?> packet = Class.forName("org.henrya.pingapi." + version + ".PongPacketHandler");
+	        Constructor<?> constructor = packet.getDeclaredConstructor(this.getClass());
+			PongPacket pong = (PongPacket) constructor.newInstance(this);
+			pong.send();
+		} catch(ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Returns the payload for the pong request
+	 * The payload is only set if the pong was cancelled and after the ping event has passed
+	 * @return The payload
+	 */
+	public long getPongPayload() {
+		return pongPayload;
+	}
+
+	/**
+	 * Sets the payload for the pong request
+	 * @param pongPayload The payload
+	 */
+	public void setPongPayload(long pongPayload) {
+		this.pongPayload = pongPayload;
 	}
 }

@@ -1,9 +1,12 @@
 package org.henrya.pingapi.v1_14_R1;
 
+import java.lang.reflect.Field;
+
 import org.henrya.pingapi.PingAPI;
 import org.henrya.pingapi.PingEvent;
 import org.henrya.pingapi.PingListener;
 import org.henrya.pingapi.PingReply;
+import org.henrya.pingapi.reflect.ReflectUtils;
 
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -24,7 +27,7 @@ public class DuplexHandler extends ChannelDuplexHandler {
 	 */
 	@Override
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-		if (msg instanceof PacketStatusOutServerInfo) {
+		if(msg instanceof PacketStatusOutServerInfo) {
 			PacketStatusOutServerInfo packet = (PacketStatusOutServerInfo) msg;
 			PingReply reply = ServerInfoPacketHandler.constructReply(packet, ctx);
 			this.event = new PingEvent(reply);
@@ -36,8 +39,12 @@ public class DuplexHandler extends ChannelDuplexHandler {
 			}
 			return;
 		}
-		if (msg instanceof PacketStatusOutPong) {
+		if(msg instanceof PacketStatusOutPong) {
+			Field field = ReflectUtils.getFirstFieldByType(msg.getClass(), long.class);
+			field.setAccessible(true);
+			long payload = field.getLong(msg);
 			if (this.event != null && this.event.isPongCancelled()) {
+				this.event.setPongPayload(payload);
 				return;
 			}
 		}
