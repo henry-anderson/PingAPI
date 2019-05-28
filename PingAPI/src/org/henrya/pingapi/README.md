@@ -1,5 +1,5 @@
 # PingAPI
-If you aren't interested in using PingAPI this document will go over how I created it. The API itself is simple and easy to use, but what happens behind the scenes is more complicated.
+If you aren't interested in using PingAPI this page will go over how I created it. The API itself is simple and easy to use, but what happens behind the scenes is more complicated.
 
 ## NMS
 You can tell by looking above that there are a number of different packages with version numbers. I had to dig into Mojang's NMS itself to listen for and modify outgoing packets. NMS classes are version dependent because the package changes for each major update. [This](https://bukkit.org/threads/safeguarding-against-unchecked-and-potentially-damaging-plugins.116749/) thread explains why that was decided upon.
