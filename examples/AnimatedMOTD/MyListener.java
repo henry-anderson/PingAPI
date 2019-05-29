@@ -21,6 +21,7 @@ public class MyListener implements PingListener {
 	@Override
 	public void onPing(PingEvent event) {
 		PingReply reply = event.getReply();
+		reply.setProtocolVersion(47);
 		if(config.getBoolean("Enabled")) {
 			event.cancelPong(true);
 			event.setCancelled(true);
@@ -31,8 +32,9 @@ public class MyListener implements PingListener {
 			List<String> animation = config.getStringList("Animation.MOTDs");
 			event.createNewPacket(reply).send();
 			for(int i = 0; i < animation.size(); i++) {
-				new MyRunnable(event, animation.get(i)).runTaskLater(plugin, i * ticks);
+				new MotdRunnable(event, animation.get(i)).runTaskLater(plugin, i * ticks);
 	        }
+			new PongRunnable(event).runTaskLater(plugin, (animation.size() * ticks));
 		}
 	}
 }
