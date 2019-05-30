@@ -57,7 +57,7 @@ public class MyListener implements PingListener {
 
 I created a plugin, [AnimatedMOTD](https://www.spigotmc.org/resources/animatedmotd.67771/), that is a good example of this feature. You can take a look at the source [here](https://github.com/henry-anderson/PingAPI/tree/master/examples).
 
-Here are two other examples of animations that I created.
+Here are some other examples of animations that I created.
 
 <img src="https://i.imgur.com/DujGVO8.gif">
 <img src="https://i.imgur.com/odrR7TE.gif">
