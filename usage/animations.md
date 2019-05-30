@@ -56,3 +56,9 @@ public class MyListener implements PingListener {
 <img src="https://i.imgur.com/0qf6ikW.gif">
 
 I created a plugin, [AnimatedMOTD](https://www.spigotmc.org/resources/animatedmotd.67771/), that is a good example of this feature. You can take a look at the source [here](https://github.com/henry-anderson/PingAPI/tree/master/examples).
+
+Here are two other examples I created.
+
+<img src="https://im4.ezgif.com/tmp/ezgif-4-76c5676a601b.gif">
+
+<img src="https://proxy.spigotmc.org/b1483c3a28e94b30fa8a9036b10d8994dec3231b?url=https%3A%2F%2Fi.imgur.com%2FodrR7TE.gif">
