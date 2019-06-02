@@ -1,0 +1,52 @@
+<html>
+    <head>
+    <script>
+        var spigotDownloads = this.getSpigotDownloads();
+        var bukkitDownloads = this.getBukkitDownloads();;
+
+        function getSpigotDownloads() {
+            var http = new XMLHttpRequest();
+            http.open("GET", "https://api.spiget.org/v2/resources/3829", false);
+            http.send(null);    
+            if(http.status == 200) {
+                var downloads = http.responseText.split("\"downloads\": ")[1].split(",")[0];
+                return parseInt(downloads);
+            }
+        }
+
+        function getBukkitDownloads() {
+            var http = new XMLHttpRequest();
+            http.open("GET", "https://cors-anywhere.herokuapp.com/https://dev.bukkit.org/projects/pingapi", false);
+            http.setRequestHeader("accept", 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
+            http.setRequestHeader("accept-language", 'en-US,en;q=0.9');
+            http.setRequestHeader("cache-control", 'max-age=0');
+            http.setRequestHeader("upgrade-insecure-requests", '1');
+            http.send(null);
+            if(http.status == 200) {
+                var downloads = http.responseText.split("<div class=\"info-data\">")[4].split("</div>")[0].replace(",", "");
+                return parseInt(downloads);
+            }
+        }
+
+        function renderImage(url) {
+            var http = new XMLHttpRequest();
+            http.open("GET", "https://cors-anywhere.herokuapp.com/" + url, false);
+            http.setRequestHeader("accept", 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3');
+            http.setRequestHeader("accept-language", 'en-US,en;q=0.9');
+            http.setRequestHeader("cache-control", 'max-age=0');
+            http.setRequestHeader("upgrade-insecure-requests", '1');
+            http.send(null);
+            if(http.status == 200) {
+                document.write(http.responseText);
+            }
+        }
+
+        var totalDownloads = this.getBukkitDownloads() + this.getSpigotDownloads();
+        var url = "https://img.shields.io/badge/downloads-" + totalDownloads + "-blue.svg";
+        renderImage(url);
+        console.log(document.body.scrollHeight + ": " + document.body.scrollWidth);
+    </script>
+    </head>
+    <body style="padding:0;margin:0;">
+    </body>
+</html>
