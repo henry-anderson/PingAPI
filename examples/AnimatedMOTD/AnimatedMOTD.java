@@ -12,8 +12,12 @@ public class AnimatedMOTD extends JavaPlugin {
 	public void onEnable() {
 		this.getDataFolder().mkdirs();
 		File configFile = new File(this.getDataFolder() + File.separator +  "config.yml");
+		File iconFolder = new File(this.getDataFolder() + File.separator + "icons");
 		if(!configFile.exists()) {
 			this.saveResource("config.yml", false);
+		}
+		if(!iconFolder.exists()) {
+			iconFolder.mkdir();
 		}
 		this.config = YamlConfiguration.loadConfiguration(configFile);
 		PingAPI.registerListener(new MyListener(this));
