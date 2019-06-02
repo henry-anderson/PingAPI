@@ -1,10 +1,12 @@
-# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.2.1-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
+# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.1-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.1-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.3.1-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://img.shields.io/spiget/downloads/3829.svg?color=blue">](https://www.spigotmc.org/resources/pingapi.3829/)
 
 [<img src="https://i.imgur.com/CZm3X3M.gif">](README.md)
 
 PingAPI gives Bukkit developers more control over how they reply to ping requests. Simply put it provides an improvement to Bukkit's ServerListPingEvent. You can download it [here](http://www.spigotmc.org/resources/pingapi.3829/).
 
 It has been a few years since I have worked on this project, but I decided to update it for newer versions of CraftBukkit and keep backwards compatibility. I will try to keep it maintained and up to date from now on. The most important change to note is that creating animations is no longer possible for servers running newer versions of CraftBukkit.
+
+[Plugins Using PingAPI](plugins.md)
 
 ## Features [<img src="https://img.shields.io/badge/animations-1.7.5%20--%201.8.3-blueviolet.svg">](README.md)
 - Modify the online player count and the max players
