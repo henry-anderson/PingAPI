@@ -52,8 +52,8 @@ public class PingInjector implements Listener {
 			field.setAccessible(true);
 			for(Object manager : networkManagers) {
 				Channel channel = (Channel) field.get(manager);
-				if(channel.pipeline().context("ping_handler") == null && (channel.pipeline().context("packet_handler") != null)) {
-					channel.pipeline().addBefore("packet_handler", "ping_handler", new DuplexHandler());
+				if(channel.pipeline().context("pingapi_handler") == null && (channel.pipeline().context("packet_handler") != null)) {
+					channel.pipeline().addBefore("packet_handler", "pingapi_handler", new DuplexHandler());
 				}
 			}
 		} catch(IllegalAccessException e) {
