@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import net.minecraft.server.v1_7_R4.MinecraftServer;
 import net.minecraft.server.v1_7_R4.NetworkManager;
@@ -45,12 +46,20 @@ public class PingInjector implements Listener {
 	/**
 	 * Iterates through every open NetworkManager and adds my ChannelDuplexHandler subclass into the pipeline
 	 * This allows you to listen for outgoing packets and modify them before they are sent
+	 * 
+	 * The List of NetworkManager instances is converted to an array to avoid ConcurrentModificationExceptions
+	 * NullPointerExceptions, IllegalArgumentExceptions, and NoSuchElementException only occur if there is a massive amount of ping requests being sent to the server.
+	 * NullPointerExceptions are thrown when the pipeline has yet to be created. 
+	 * Since ping responses are handled on separate threads IllegalArgumentExceptions are thrown when this method is invoked at the same time on two different threads
+	 * This means the null check will be passed and this method will attempt to create a duplicate handler which throws this exception
+	 * NoSuchElementExceptions have a similar cause. They are caused when the "packet_handler" has yet to be added.
+	 * The best solution I could find is simply ignoring these exceptions
 	 */
 	public void injectOpenConnections() {
 		try {
 			Field field = ReflectUtils.getFirstFieldByType(NetworkManager.class, Channel.class);
 			field.setAccessible(true);
-			for(Object manager : networkManagers) {
+			for(Object manager : networkManagers.toArray()) {
 				Channel channel = (Channel) field.get(manager);
 				if(channel.pipeline().context("pingapi_handler") == null && (channel.pipeline().context("packet_handler") != null)) {
 					channel.pipeline().addBefore("packet_handler", "pingapi_handler", new DuplexHandler());
@@ -58,7 +67,7 @@ public class PingInjector implements Listener {
 			}
 		} catch(IllegalAccessException e) {
 			e.printStackTrace();
-		}
+		} catch(NullPointerException | IllegalArgumentException | NoSuchElementException ignored) {}
 	}
 	
 	/**
