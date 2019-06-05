@@ -1,4 +1,4 @@
-# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.2-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.2-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.3.3-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://emblems.herokuapp.com/pingapi_downloads.php?unused">](https://www.spigotmc.org/resources/pingapi.3829/)
+# PingAPI [<img src="https://img.shields.io/badge/minecraft-1.14.2-important.svg">](README.md) [<img src="https://img.shields.io/badge/craftbukkit-1.7.5%20--%201.14.2-critical.svg">](README.md) [<img src="https://img.shields.io/badge/release-v1.3.3-blue.svg">](README.md) [<img src="https://img.shields.io/badge/license-MIT-blue.svg">](https://github.com/henry-anderson/PingAPI/blob/master/LICENSE) [<img src="https://emblems.herokuapp.com/services/spigotbukkit/downloads.php?spigot=3829&bukkit=89296">](https://www.spigotmc.org/resources/pingapi.3829/)
 
 [<img src="https://i.imgur.com/CZm3X3M.gif">](README.md)
 
